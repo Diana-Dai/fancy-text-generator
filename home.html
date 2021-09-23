@@ -25,7 +25,7 @@
   <meta name="description"
     content="Fancy Text Font Generator. Get your personal stylish Instagram names and stories! Free and no registration required.">
   <link rel="shortcut icon" href="https://fancy-text-generator.com/favicon.ico">
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="home.css">
   <meta name="msapplication-TileColor" content="#FFFFFF">
   <meta name="msapplication-TileImage" content="/favicon-144.png">
   <link rel="canonical" href="https://fancy-text-generator.com/">
@@ -73,23 +73,36 @@
       </h1>
       <nav aria-label="Main">
         <ul>
-          <li><a href="https://fancy-text-generator.com/" aria-current="page">Home</a></li>
-          <li><a href="">Patterns</a></li>
-          <li><a href="">Ios Emojis</a></li>
-          <li><a href="">Android Emojis</a></li>
-          <li><a href="">Unicode</a></li>
+          <li><a class="underline" href="home.html" aria-current="page">Home</a></li>
+          <li><a class="underline" href="patterns.html">Patterns</a></li>
+          <li><a class="underline" href="">Ios Emojis</a></li>
+          <li><a class="underline" href="">Android Emojis</a></li>
+          <li><a class="underline" href="">Unicode</a></li>
         </ul>
       </nav>
     </div>
   </header>
-  <div class="container wrap">
+  <div class="container container-xxl wrap">
     <h2>ᴀᴋᴀ. ɪɴsᴛᴀɢʀᴀᴍ ᴛᴀᴛᴛᴏᴏ ғᴏɴᴛ ɢᴇɴᴇʀᴀᴛᴏʀ</h2>
     <div id="input">
-
-      <textarea id="src" placeholder="(◍⁀‿⁀◍)ノType or copy your text here :)" data-gramm_editor="false"></textarea>
+      <textarea id="src" placeholder="Type or copy your text here(◍⁀‿⁀◍)ノ" data-gramm_editor="false"></textarea>
     </div>
     <div id="copyandpaste"></div>
-    <div id="out"><textarea id="demo" placeholder="𝕱𝖆𝖓𝖈𝖞 𝓣𝓮𝔁𝓽 𝖔𝖚𝖙... (click to copy)"></textarea></div>
+    <div id="out">
+      <!-- <textarea id="demo" placeholder="𝕱𝖆𝖓𝖈𝖞 𝓣𝓮𝔁𝓽 𝖔𝖚𝖙... (click to copy)"></textarea> -->
+      <!-- <div class="info-bar">
+        <span class="icon">
+          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+            </path>
+          </svg>
+        </span>
+        <span class="msg">
+          Tap or click on any text block to copy the 𝕱𝖆𝖓𝖈𝖞 𝓣𝓮𝔁𝓽 ~
+        </span>
+      </div> -->
+    </div>
     <h3>ℍ𝕠𝕨 𝕕𝕠𝕖𝕤 𝕥𝕙𝕚𝕤 𝕨𝕠𝕣𝕜?</h3>
     <section id="intro">
       <ul>
@@ -162,9 +175,8 @@
         "αႦƈԃҽϝɠԋιʝƙʅɱɳσρϙɾʂƚυʋɯxყȥαႦƈԃҽϝɠԋιʝƙʅɱɳσρϙɾʂƚυʋɯxყȥ",
       ];
       function e() {
-        $("#out").html(
-          '<textarea id="demo" placeholder="𝕱𝖆𝖓𝖈𝖞 𝓣𝓮𝔁𝓽 𝕆𝕦𝕥... (click to copy)"></textarea>'
-        );
+        $("#out").html('<textarea id="demo" placeholder="𝕱𝖆𝖓𝖈𝖞 𝓣𝓮𝔁𝓽 𝖔𝖚𝖙 ⓗⓔⓡⓔ... (click to copy)"></textarea>')
+
       }
       $("#src").change(i).on("keyup input contextmenu", i), e();
       var a = new Date(),
@@ -216,13 +228,14 @@
       function l() {
         s();
         var e = $("#src").val();
+        console.log(e);
         $("#out").empty();
         for (var r = 0; r < t.length; r++) {
           var i = t[r],
             o = "fancy_txt" + r,
             c = $("#" + o).length > 0,
             l = c ? $("#" + o) : $('<textarea id="' + o + '"></textarea>'),
-            el = $('<div class="text-wrapper"><span class="copy">Copy</span></div>').append(l);
+            el = $('<div class="text-wrapper copy-wrapper"><span class="copy">Click To Copy</span></div>').append(l);
           l.val(u(e, i)), c || $("#out").append(el), d(l[0]);
         }
         [1161, 822, 818, 823, 819, 830, 846, 829].forEach(function (t, a) {
@@ -231,7 +244,9 @@
             i = r
               ? $("#" + n)
               : $('<textarea class="hyper" id="' + n + '"></textarea>');
-          i.val(f(e, t)), r || $("#out").append(i), d(i[0]);
+          ei = $('<div class="text-wrapper copy-wrapper"><span class="copy">Click To Copy</span></div>').append(i);
+
+          i.val(f(e, t)), r || $("#out").append(ei), d(i[0]);
         }),
           (a = new Date()),
           (n = e),
@@ -279,9 +294,9 @@
         $(t).html(a);
       }
       // click to copy
-      function p(t) {
-        c(t, "click to copy!", "000", ".1");
-      }
+      // function p(t) {
+      //   c(t, "click to copy!", "000", ".1");
+      // }
       $("#src").bind("keyup input contextmenu", function () {
         d($(this)[0]);
       }),
@@ -306,6 +321,7 @@
               t("config", "UA-25873290-7");
           }
         ),
+        // Copy Function
         $("#out").on("click", "textarea", function () {
           ((t) => {
             const e = document.createElement("textarea");
@@ -318,7 +334,13 @@
           var t = $(this),
             e = $("#out textarea").not(t);
           // finish copy
-          c(t, "done :)", "000", ".1"), p(e);
+          var span = t.parent().find('span');
+          span.text('Copied!');
+          setTimeout(() => {
+            span.text('Copy');
+          }, 1000)
+
+          // c(t, "done :)", "000", ".1"), p(e);
         }),
         aloadJS(
           "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d4ef23adc8f9863",
@@ -329,7 +351,17 @@
       "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js",
       _m
     );
-
+    // Sticky TextArea
+    $(window).scroll(function () {
+      var _scrolltop = $('#out').offset().top;
+      var scrollTop = $(this).scrollTop();
+      console.log(scrollTop, _scrolltop)
+      if (scrollTop >= _scrolltop) {
+        $("#input").addClass('fixedTop');
+      } else {
+        $('#input').removeClass('fixedTop');
+      }
+    })
   </script>
 </body>
 
