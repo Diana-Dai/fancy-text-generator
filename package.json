@@ -1,0 +1,22 @@
+{
+  "name": "fancy-text-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Diana-Dai/fancy-text-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Diana-Dai/fancy-text-generator/issues"
+  },
+  "homepage": "https://github.com/Diana-Dai/fancy-text-generator#readme",
+  "dependencies": {
+    "punycode": "^2.1.1"
+  }
+}

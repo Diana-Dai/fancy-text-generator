@@ -15,12 +15,15 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   margin: 0;
+  padding: 0;
   --background-color: #ffffff;
   --header-color: rgba(255, 255, 255, 0.85);
   --sidebar-color: rgba(0, 0, 0, 0.65);
   --sidebar-hover-color: rgba(0, 0, 0, 0.1);
   --font-color: #000;
   --font-hover-color: #0c82e6;
+  --bg-hover-color: #0c80e62f;
+  --mytext-color: #ced4da;
   background: var(--background-color);
   color: var(--font-color);
 }
@@ -51,7 +54,7 @@ body {
 }
 
 .copy {
-  /* display: none; */
+  display: none;
   cursor: pointer;
   position: absolute;
   padding: 0.3rem 0.4rem;
@@ -59,7 +62,7 @@ body {
   color: var(--background-color);
   font-size: 0.8rem;
   border-radius: 0.3rem;
-  right: 0.7rem;
+  right: 0.35rem;
   top: 50%;
   z-index: 1;
   transform: translateY(-50%);
@@ -72,6 +75,9 @@ body {
 }
 .copy-wrapper:hover {
   color: var(--font-hover-color);
+}
+.copy-wrapper:hover p {
+  background-color: var(--bg-hover-color);
 }
 .copy-wrapper:hover span {
   opacity: 1;
@@ -129,6 +135,7 @@ header {
   margin-left: 280px;
 }
 /* Aside */
+
 aside {
   width: 250px;
   overflow: scroll;
@@ -143,12 +150,11 @@ aside {
 }
 .bd-sidebar .bg-links {
   margin-top: 0;
-
   text-align: left;
 }
 
 .bd-sidebar .category {
-  width: 7rem;
+  width: 13.5rem;
   line-height: 1.5;
   display: inline-block;
   padding: 0.3rem 0.7rem;
@@ -166,35 +172,6 @@ aside {
 .bd-sidebar .category.active {
   border: 1px solid var(--sidebar-color);
 }
-.bd-sidebar .arrow.active::before {
-  transform: rotate(90deg);
-}
-.bd-sidebar .icon::before {
-  display: inline-block;
-  width: 1.5em;
-  line-height: 0;
-  vertical-align: text-bottom;
-}
-.bd-sidebar .arrow::before {
-  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
-  transition: transform 0.2s linear;
-  transform-origin: 0.5em 50%;
-}
-.bd-sidebar .date::before {
-  content: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='16' height='16' ml-update='aware'%3E%3Cpath d='M864 141h-41v-12c0-36-29-66-65-66h-1c-36 0-65 30-65 66v12H332v-12c0-36-29-66-65-66h-1c-36 0-65 30-65 66v12h-41c-36 0-65 29-65 65v626c0 36 29 65 65 65h704c36 0 65-29 65-65V206c0-36-29-65-65-65zm-146-12c0-22 18-40 39-40h1c22 0 39 18 39 40v116c0 22-17 39-39 39h-1c-21 0-39-17-39-39V129zm-491 0c0-22 17-40 39-40h1c21 0 39 18 39 40v116c0 22-18 39-39 39h-1c-22 0-39-17-39-39V129zm637 716H160c-7 0-13-6-13-13V372h730v460c0 7-6 13-13 13zM662 703'/%3E%3C/svg%3E");
-}
-.bd-sidebar .process::before {
-  content: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='16' height='16' ml-update='aware'%3E%3Cpath d='M866 51H157c-43 0-78 35-78 77v771c0 42 35 76 78 76h702c46 0 84-36 84-81V128c0-42-34-77-77-77zm23 843c0 15-14 26-30 26H157c-13 0-23-9-23-21V128c0-12 10-22 23-22h709c12 0 23 10 23 22v766z' fill='%232c2c2c'/%3E%3Cpath d='M409 483 291 375a27 27 0 0 0-37 40l114 105-115 107a27 27 0 1 0 38 40l118-110a50 50 0 0 0 0-74z' fill='%232c2c2c'/%3E%3Cpath d='M585 483 467 375a27 27 0 0 0-37 40l115 105-115 107a27 27 0 1 0 37 40l118-110a50 50 0 0 0 0-74z' fill='%232c2c2c'/%3E%3Cpath d='M761 483 643 375a27 27 0 0 0-37 40l115 105-115 107a27 27 0 1 0 37 40l119-110a50 50 0 0 0-1-74z' fill='%232c2c2c'/%3E%3C/svg%3E");
-}
-.bd-sidebar .quotes::before {
-  content: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='16' height='16' ml-update='aware'%3E%3Cpath d='M414 610c43 0 77-34 77-77 0-38-30-72-69-72h-21c0-13 0-77 68-111l-17-30c-77 34-128 98-128 175 0 43 13 68 34 94 9 13 30 21 56 21zm213 0c43 0 77-34 77-77 0-38-30-72-68-72h-22c0-13 0-77 69-111l-17-30c-77 34-128 98-128 175 0 43 12 68 34 94 8 13 30 21 55 21z'/%3E%3Cpath d='M896 128H128c-26 0-43 17-43 43v789l192-149h619c26 0 43-17 43-43V171c0-26-17-43-43-43zm-43 597H247l-76 60V213h682v512z'/%3E%3C/svg%3E");
-}
-.collapse {
-  display: none;
-}
-.active ~ .collapse {
-  display: block;
-}
 
 aside nav li {
   font-size: 0.9rem;
@@ -207,7 +184,6 @@ aside nav li a {
   padding: 0.2rem 0.5rem;
   transition: all 0.2s linear;
 }
-
 aside nav li a.active {
   color: var(--font-color);
   font-weight: 500;
@@ -215,7 +191,6 @@ aside nav li a.active {
 .bd-content {
   margin-bottom: 1.5rem;
 }
-
 #date-input {
   margin-left: 0.8rem;
   margin-top: 0.2rem;
@@ -236,36 +211,24 @@ h4 {
 
 .content-wrapper .flex-item {
   text-align: center;
-  padding: 0.6rem 0.8rem;
+  padding: 0.3rem 0.4rem;
 }
-.content-wrapper .item-33 {
-  width: 33.3%;
+.content-wrapper .item-10 {
+  width: 70px;
 }
-.content-wrapper .item-50 {
-  width: 50%;
-}
+
 .content-wrapper .flex-item p {
   cursor: pointer;
   width: 100%;
   padding: 0.3rem 0;
   margin: 0;
-  border-radius: 0.3em;
+  border-radius: 0.2em;
   display: inline-block;
   border: 1px solid currentColor;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-}
-.content-wrapper .item-33 p:hover {
-  color: var(--font-hover-color);
-}
-.copy {
-  right: 1.5rem;
-}
-.sub-title {
-  font-weight: normal;
-  color: var(--sidebar-color);
-}
-.sub-title span {
-  color: var(--font-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
 }
 
 /* Text Area */

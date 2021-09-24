@@ -1,0 +1,151 @@
+[
+    {
+    "category":"Standard",
+    "start":33,
+    "end":255
+},
+
+{
+    "category":"General Punctuation",
+    "start":8208,
+    "end":8231
+ },
+{
+    "category":"General Punctuation",
+    "start":8240,
+    "end":8286
+ },
+ {
+     "category":"Superscripts and Subscripts",
+     "start":8304,
+     "end":8348
+ },
+     {"category":"Currency Symbols"
+    ,"start":8352,
+    "end":8399},
+ {
+     "category":"Letterlike Symbols",
+     "start":8448,
+     "end":8527
+ },
+ {
+     "category":"Greek Characters",
+     "start":913,
+     "end":969
+ }
+ ,{
+     "category":"Number Forms",
+     "start":8528,
+     "end":8582
+ },
+ {
+     "category":"Arrows",
+     "start":8592,
+     "end":8703
+ },
+ {
+     "category":"Supplemental Arrows",
+     "start":10224,
+     "end":10238
+ },
+ {
+     "category":"Supplemental Arrows",
+     "start":10496,
+     "end":10627
+ },
+ {
+     "category":"Mathematical Operators",
+     "start":8704,
+     "end":8959
+ }
+ ,{
+     "category":"Math Symbols",
+     "start":10176,
+     "end":10176 }
+ ,{
+     "category":"Math Symbols",
+     "start":10624,
+     "end":10751 }
+ ,
+ {
+     "category":"Supplemental Math Operators",
+     "start":10752,
+     "end":11007 },
+ {
+     "category":"Miscellaneous Technical",
+     "start":8960,
+     "end":9215 },
+ {
+     "category":"Control Pictures",
+     "start":9216,
+     "end":9216 },
+ {
+     "category":"Enclosed Alphanumerics",
+     "start":9312,
+     "end":9471 },
+ {
+     "category":"Box Drawing",
+     "start":9472,
+     "end":9599 },
+ {
+     "category":"Block Elements",
+     "start":9600,
+     "end":9631 },
+ {
+     "category":"Geometric Shapes",
+     "start":9632,
+     "end":9727 },
+ {
+     "category":"Geometric Shapes",
+     "start":9632,
+     "end":9727 },
+ {
+     "category":"Geometric Shapes",
+     "start":128896,
+     "end":129023 },
+ {
+     "category":"Miscellaneous Symbols",
+     "start":9728,
+     "end":9983 },
+ {
+     "category":"Dingbats",
+     "start":9984,
+     "end":10175 },
+ {
+     "category":"Braille Patterns",
+     "start":10240,
+     "end":10495 },
+ {
+     "category":"Misc Symbols and Arrows",
+     "start":11008,
+     "end":11263 },
+ {
+     "category":"Musical Symbols",
+     "start":119040,
+     "end":119295 },
+ {
+     "category":"Domino Tiles",
+     "start":127024,
+     "end":127135 },
+ {
+     "category":"Playing Cards",
+     "start":127136,
+     "end":127231},
+ {
+     "category":"Emoticons",
+     "start":128512,
+     "end":128591 },
+ {
+     "category":"Pictographs",
+     "start":127744,
+     "end":128511 },
+ {
+     "category":"Pictographs",
+     "start":129280,
+     "end":129535 },
+ {
+     "category":"Transport/Map",
+     "start":128640,
+     "end":128767 }
+
+]
