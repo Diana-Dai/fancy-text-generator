@@ -73,11 +73,14 @@
       </h1>
       <nav aria-label="Main">
         <ul>
+          <li><a class="darkMode" role="button" title="Use light theme" id="dark-toggler"
+              aria-label="Toggle DarkMode"></a>
+          </li>
           <li><a class="underline" href="home.html" aria-current="page">Home</a></li>
           <li><a class="underline" href="patterns.html">Patterns</a></li>
-          <li><a class="underline" href="">Ios Emojis</a></li>
+          <li><a class="underline" href="iosEmojis.html">Ios Emojis</a></li>
           <li><a class="underline" href="">Android Emojis</a></li>
-          <li><a class="underline" href="">Unicode</a></li>
+          <li><a class="underline" href="unicode.html">Unicode</a></li>
         </ul>
       </nav>
     </div>
@@ -89,19 +92,7 @@
     </div>
     <div id="copyandpaste"></div>
     <div id="out">
-      <!-- <textarea id="demo" placeholder="𝕱𝖆𝖓𝖈𝖞 𝓣𝓮𝔁𝓽 𝖔𝖚𝖙... (click to copy)"></textarea> -->
-      <!-- <div class="info-bar">
-        <span class="icon">
-          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
-            </path>
-          </svg>
-        </span>
-        <span class="msg">
-          Tap or click on any text block to copy the 𝕱𝖆𝖓𝖈𝖞 𝓣𝓮𝔁𝓽 ~
-        </span>
-      </div> -->
+
     </div>
     <h3>ℍ𝕠𝕨 𝕕𝕠𝕖𝕤 𝕥𝕙𝕚𝕤 𝕨𝕠𝕣𝕜?</h3>
     <section id="intro">
@@ -137,6 +128,36 @@
       title="High Resolution QR Code Generator">QR Code Generator</a><a href="https://www.arealme.com/" target="_blank"
       title="ARealMe Quizzes">Super cool online quizzes</a></div>
   <script>
+    toggleDarkMode()
+    function toggleDarkMode() {
+      // darkMode
+      $('#dark-toggler').click(function () {
+        $(this).toggleClass('active');
+        $(this).attr('title', "Use dark mode");
+        var cl = $("body").toggleClass("dark");
+        if ($("body").hasClass('dark')) {
+          // Whenever the user explicitly chooses dark mode
+          localStorage.theme = 'dark';
+        } else {
+          //     // Whenever the user explicitly chooses light mode
+          localStorage.theme = 'light';
+        }
+      })
+      changeStorageData();
+      function changeStorageData() {
+        if (
+          localStorage.theme === 'dark'
+          || (!('theme' in localStorage)
+            && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          $("body").addClass('dark');
+          $('#dark-toggler').addClass('active');
+        } else {
+          $("body").removeClass('dark');
+        }
+      };
+    }
+
     function aloadJS(t, e) {
       var a = document;
       window,
@@ -175,7 +196,7 @@
         "αႦƈԃҽϝɠԋιʝƙʅɱɳσρϙɾʂƚυʋɯxყȥαႦƈԃҽϝɠԋιʝƙʅɱɳσρϙɾʂƚυʋɯxყȥ",
       ];
       function e() {
-        $("#out").html('<textarea id="demo" placeholder="𝕱𝖆𝖓𝖈𝖞 𝓣𝓮𝔁𝓽 𝖔𝖚𝖙 ⓗⓔⓡⓔ... (click to copy)"></textarea>')
+        $("#out").html('<div id="demo">𝔜𝔬𝔲𝔯 𝔉𝔞𝔫𝔠𝔶 𝔗𝔢𝔵𝔱 ℑ𝔰 ℭ𝔬𝔪𝔦𝔫𝔤 𝔒𝔲𝔱 ℌ𝔢𝔯𝔢...</div>')
 
       }
       $("#src").change(i).on("keyup input contextmenu", i), e();
@@ -206,25 +227,7 @@
         }),
           (r = []);
       }
-      function c(t, e, a, n, r, i) {
-        (r && i) || ((r = t.width()), (i = t.height() * 2.5));
 
-        var o =
-          "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='" +
-          i +
-          "px' width='200px'><text x='" +
-          r / 1 +
-          "' y='" +
-          i / 2 +
-          "' alignment-baseline='middle' text-anchor='end' fill-opacity='" +
-          n +
-          "' fill='%23" +
-          a +
-          "' font-size='16' font-style='italic' font-weight='bold' font-family='Arial, Helvetica, sans-serif'>" +
-          e +
-          '</text></svg>")';
-        t.css("background-image", o);
-      }
       function l() {
         s();
         var e = $("#src").val();
@@ -234,30 +237,28 @@
           var i = t[r],
             o = "fancy_txt" + r,
             c = $("#" + o).length > 0,
-            l = c ? $("#" + o) : $('<textarea id="' + o + '"></textarea>'),
+            l = c ? $("#" + o) : $('<div class="copy-area" id="' + o + '"></div>'),
             el = $('<div class="text-wrapper copy-wrapper"><span class="copy">Click To Copy</span></div>').append(l);
-          l.val(u(e, i)), c || $("#out").append(el), d(l[0]);
+          l.text(u(e, i)), c || $("#out").append(el), d(l[0]);
         }
         [1161, 822, 818, 823, 819, 830, 846, 829].forEach(function (t, a) {
           var n = "hyper_txt" + a,
             r = $("#" + n).length > 0,
             i = r
               ? $("#" + n)
-              : $('<textarea class="hyper" id="' + n + '"></textarea>');
+              : $('<div class="copy-area" class="hyper" id="' + n + '"></div>');
           ei = $('<div class="text-wrapper copy-wrapper"><span class="copy">Click To Copy</span></div>').append(i);
 
-          i.val(f(e, t)), r || $("#out").append(ei), d(i[0]);
+          i.text(f(e, t)), r || $("#out").append(ei), d(i[0]);
         }),
           (a = new Date()),
           (n = e),
           $("#renderLoading").css("opacity", 0),
-          $("#out textarea").removeClass("working"),
-          $("#out textarea").each(function () {
-            p($(this));
-          });
+          $("#out div").removeClass("working")
       }
       function d(t) {
-        (t.style.height = "5px"), (t.style.height = t.scrollHeight + "px");
+        console.log(t.scrollHeight);
+        // (t.style.height = "5px"), (t.style.height = t.scrollHeight + "px");
       }
       function u(t, e) {
         if (!t) return "";
@@ -293,10 +294,7 @@
         var a = f($(t).html(), e);
         $(t).html(a);
       }
-      // click to copy
-      // function p(t) {
-      //   c(t, "click to copy!", "000", ".1");
-      // }
+
       $("#src").bind("keyup input contextmenu", function () {
         d($(this)[0]);
       }),
@@ -322,7 +320,7 @@
           }
         ),
         // Copy Function
-        $("#out").on("click", "textarea", function () {
+        $("#out").on("click", ".copy-area", function () {
           ((t) => {
             const e = document.createElement("textarea");
             (e.value = t),
@@ -337,10 +335,9 @@
           var span = t.parent().find('span');
           span.text('Copied!');
           setTimeout(() => {
-            span.text('Copy');
+            span.text('Click To Copy');
           }, 1000)
 
-          // c(t, "done :)", "000", ".1"), p(e);
         }),
         aloadJS(
           "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d4ef23adc8f9863",

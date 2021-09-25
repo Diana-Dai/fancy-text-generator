@@ -74,6 +74,9 @@
             </h1>
             <nav aria-label="Main">
                 <ul>
+                    <li><a class="darkMode" role="button" title="Use light theme" id="dark-toggler"
+                            aria-label="Toggle DarkMode"></a>
+                    </li>
                     <li><a class="underline" href="home.html">Home</a></li>
                     <li><a class="underline" href="patterns.html" aria-current="page">Patterns</a></li>
                     <li><a class="underline" href="iosEmojis.html">Ios Emojis</a></li>
@@ -140,26 +143,7 @@
                         </div>
                     </li>
                     <li><a class="category icon quotes" href="#quotes-content">Quotes</a>
-                        <!-- <div class="collapse">
-                            <ul>
-                                <li>
-                                    <a class="active" href="">
-                                        Movies
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        Books
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        Famous
-                                    </a>
-                                </li>
 
-                            </ul>
-                        </div> -->
                     </li>
                 </ul>
             </nav>
@@ -229,6 +213,7 @@
 
     <script>
         $(document).ready(function () {
+            toggleDarkMode()
             // Copy text function
             $(".copy-area").each(function () {
                 $(this).on("click", "p", function () {
@@ -338,6 +323,34 @@
                 var originalval = $("#mytext").val();
                 // console.log($("#myText"))
                 $("#mytext").val(originalval + val);
+            }
+            function toggleDarkMode() {
+                // darkMode
+                $('#dark-toggler').click(function () {
+                    $(this).toggleClass('active');
+                    $(this).attr('title', "Use dark mode");
+                    var cl = $("body").toggleClass("dark");
+                    if ($("body").hasClass('dark')) {
+                        // Whenever the user explicitly chooses dark mode
+                        localStorage.theme = 'dark';
+                    } else {
+                        //     // Whenever the user explicitly chooses light mode
+                        localStorage.theme = 'light';
+                    }
+                })
+                changeStorageData();
+                function changeStorageData() {
+                    if (
+                        localStorage.theme === 'dark'
+                        || (!('theme' in localStorage)
+                            && window.matchMedia('(prefers-color-scheme: dark)').matches)
+                    ) {
+                        $("body").addClass('dark');
+                        $('#dark-toggler').addClass('active');
+                    } else {
+                        $("body").removeClass('dark');
+                    }
+                };
             }
 
         })

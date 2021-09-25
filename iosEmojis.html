@@ -74,6 +74,9 @@
             </h1>
             <nav aria-label="Main">
                 <ul>
+                    <li><a class="darkMode" role="button" title="Use light theme" id="dark-toggler"
+                            aria-label="Toggle DarkMode"></a>
+                    </li>
                     <li><a class="underline" href="home.html">Home</a></li>
                     <li><a class="underline" href="patterns.html">Patterns</a></li>
                     <li><a class="underline" href="iosEmojis.html" aria-current="page">Ios Emojis</a></li>
@@ -183,6 +186,7 @@
 
     <script>
         $(document).ready(function () {
+            toggleDarkMode()
             // Copy text function
             $(".copy-area").each(function () {
                 $(this).on("click", "p", function () {
@@ -278,6 +282,36 @@
                 // console.log($("#myText"))
                 $("#mytext").val(originalval + val);
             }
+
+            function toggleDarkMode() {
+                // darkMode
+                $('#dark-toggler').click(function () {
+                    $(this).toggleClass('active');
+                    $(this).attr('title', "Use dark mode");
+                    var cl = $("body").toggleClass("dark");
+                    if ($("body").hasClass('dark')) {
+                        // Whenever the user explicitly chooses dark mode
+                        localStorage.theme = 'dark';
+                    } else {
+                        //     // Whenever the user explicitly chooses light mode
+                        localStorage.theme = 'light';
+                    }
+                })
+                changeStorageData();
+                function changeStorageData() {
+                    if (
+                        localStorage.theme === 'dark'
+                        || (!('theme' in localStorage)
+                            && window.matchMedia('(prefers-color-scheme: dark)').matches)
+                    ) {
+                        $("body").addClass('dark');
+                        $('#dark-toggler').addClass('active');
+                    } else {
+                        $("body").removeClass('dark');
+                    }
+                };
+            }
+
         })
 
 

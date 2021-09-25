@@ -16,12 +16,23 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   margin: 0;
+  padding: 0;
   --background-color: #ffffff;
-  --header-color: rgba(255, 255, 255, 0.85);
   --font-color: #000;
-  --font-hover-color: #0c82e6;
+  --font-hover-color: #d3765a;
+  --bg-hover-color: #7ab8ee23;
+  --input-bg-color: #ffffff;
   background: var(--background-color);
   color: var(--font-color);
+}
+body.dark {
+  --background-color: #181818;
+  --font-color: #fff;
+  --input-bg-color: #121212;
+}
+body.dark #src {
+  box-shadow: 0 0.5rem 1rem rgba(170, 170, 170, 0.25),
+    inset 0 -1px 0 rgba(92, 91, 91, 0.85);
 }
 .container {
   margin: auto;
@@ -39,13 +50,13 @@ body {
 
 #links a {
   padding: 9px 20px;
-  color: #333;
+  color: var(--font-color);
   text-decoration: none;
 }
 
 #links a:hover {
   text-decoration: underline;
-  color: #000;
+  color: var(--font-color);
 }
 .copy-wrapper {
   position: relative;
@@ -74,11 +85,45 @@ body {
 }
 /* ***E-APPLY TO ALL PAGES */
 
+/* Dark Mode  */
+
+.darkMode {
+  position: relative;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  display: inline-block;
+  height: 1.5rem;
+  width: 1.5rem;
+  vertical-align: bottom;
+}
+.darkMode.active:before {
+  opacity: 0;
+}
+.darkMode.active:after {
+  opacity: 1;
+}
+.darkMode:after,
+.darkMode:before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: no-repeat 50%/120%;
+}
+.darkMode:before {
+  /* Moon */
+  background-image: url("data:image/svg+xml,%3Csvg class='icon' width='16' height='16' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' ml-update='aware'%3E%3Cpath fill='%23fff' d='M515 171a341 341 0 0 0 293 512 341 341 0 1 1-293-512z'/%3E%3C/svg%3E");
+}
+.darkMode:after {
+  opacity: 0;
+  /* Sun */
+  background-image: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='16' height='16' ml-update='aware'%3E%3Cpath d='m344 298-58-58-48 48 58 58 48-48zm-90 183h-96v64h96v-64zm290-318h-65v93h65v-93zm241 125-49-48-57 58 45 45 61-55zM679 728l57 58 46-45-58-58-45 45zm90-183h96v-64h-96v64zM511 320c-106 0-193 87-193 193s87 193 193 193c107 0 193-87 193-193s-86-193-193-193m-32 543h65v-93h-65v93zM238 738l48 48 58-58-45-45-61 55z' fill='%23fff'/%3E%3C/svg%3E");
+}
+
 /* Header */
 
 header {
-  background-color: #000;
-  color: var(--background-color);
+  background-color: #181818;
 }
 .header_container {
   display: flex;
@@ -86,13 +131,14 @@ header {
   align-items: center;
 }
 .header_container h1 {
-  font-size: 1.4em;
+  font-size: 1.4rem;
+  color: #fff;
 }
 .header_container nav ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--header-color);
+  color: rgba(255, 255, 255, 0.85);
 }
 .header_container nav ul a {
   display: inline-block;
@@ -101,11 +147,11 @@ header {
   padding: 0 0.6rem;
 }
 .header_container nav ul a:hover {
-  color: var(--background-color);
+  color: #fff;
 }
 .header_container nav ul a[aria-current] {
   font-weight: 500;
-  color: var(--background-color);
+  color: #fff;
 }
 
 /* Main */
@@ -134,44 +180,50 @@ h3 {
   margin-bottom: 0;
 }
 
-textarea {
-  padding: 0.7rem 0.4rem;
+#out,
+#input {
+  padding: 0.3rem 0.4rem;
+  background-color: var(--input-bg-color);
+}
+
+#out #demo,
+#input textarea,
+.copy-area {
+  background-color: var(--input-bg-color);
   margin-top: 0.5rem;
   width: 100%;
-  min-height: 60px;
-  max-height: 300px;
-  -webkit-appearance: none;
   font-size: 1.2rem;
   border: 1px solid;
   border-radius: 0.3rem;
   outline: 0;
   resize: none;
   overflow: hidden;
+  color: var(--font-color);
 }
-
+#input textarea {
+  padding: 2rem 1rem 0.9rem 1rem;
+}
+#out #demo {
+  padding: 1rem;
+  color: #a8a8a8;
+}
 #src {
-  min-height: 80px;
-  background-color: #ffffff;
   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
   border-radius: 0.8rem;
 }
 #out {
   margin-top: 2rem;
 }
-#src,
-#out textarea {
-  color: inherit;
-  padding: 0.9rem 0.9rem;
-}
 
-#out textarea {
+#out .copy-area {
+  padding: 1rem 1rem 1rem 1rem;
   position: relative;
   transition: ease-in-out 0.2s all;
   cursor: pointer;
 }
 
 .hyper {
-  background-color: #faf0f0;
+  background-color: #ffe4e45b;
 }
 
 .wrap {
