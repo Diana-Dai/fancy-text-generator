@@ -88,6 +88,9 @@
             <div class="input-wrapper">
                 <i class="pen-icon" aria-label="Icon of Pencil"></i>
                 <input id="mytext" placeholder="𝓨𝓸𝓾𝓻 𝓕𝓪𝓷𝓬𝔂 𝓣𝓮𝔁𝓽 𝓗𝓮𝓻𝓮">
+                <button class="btn-copy">
+                    Copy All
+                </button>
             </div>
         </div>
     </div>
@@ -230,15 +233,10 @@
             $(".copy-area").each(function () {
                 $(this).on("click", "p", function () {
                     ((t) => {
-                        const e = document.createElement("textarea");
-                        (e.value = t),
-                            document.body.appendChild(e),
-                            e.select(),
-                            document.execCommand("copy"),
-                            document.body.removeChild(e);
+                        copyText(t)
                     })($(this).text());
-                    var t = $(this),
-                        e = $(".copy-area p").not(t);
+
+                    var t = $(this);
                     // finish copy
                     var span = t.parent().find('span');
                     span.text('Copied!');
@@ -246,9 +244,19 @@
                         span.text('Click To Copy');
                     }, 1000)
 
-                    // c(t, "done :)", "000", ".1"), p(e);
                 })
             })
+
+            // Copy All
+            $(".btn-copy").on('click', function () {
+                copyText($("#mytext").val())
+
+                $(this).text("Copied!")
+                setTimeout(() => {
+                    $(this).text("Copy All")
+                }, 1000)
+            })
+
 
             // Set date to today 
             $('#datePicker').val(new Date().toDateInputValue());
@@ -309,6 +317,29 @@
                     }
                 }
             })
+            function copyText(t) {
+                const e = document.createElement("textarea");
+                (e.value = t),
+                    document.body.appendChild(e),
+                    e.select(),
+                    document.execCommand("copy"),
+                    document.body.removeChild(e);
+
+            }
+
+            function click(element) {
+                element.on('click', function () {
+                    element.removeClass('active')
+                    $(this).addClass('active')
+                })
+            }
+
+            function changeInputVal(val) {
+                var originalval = $("#mytext").val();
+                // console.log($("#myText"))
+                $("#mytext").val(originalval + val);
+            }
+
         })
 
         Date.prototype.toDateInputValue = (function () {
@@ -316,14 +347,6 @@
             local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
             return local.toJSON().slice(0, 10);
         });
-
-        function click(element) {
-            element.on('click', function () {
-                element.removeClass('active')
-                $(this).addClass('active')
-            })
-        }
-
 
         // Set Date Texts
         function dateTexts() {

@@ -88,6 +88,9 @@
             <div class="input-wrapper">
                 <i class="pen-icon" aria-label="Icon of Pencil"></i>
                 <input id="mytext" placeholder="𝓨𝓸𝓾𝓻 𝓕𝓪𝓷𝓬𝔂 𝓣𝓮𝔁𝓽 𝓗𝓮𝓻𝓮">
+                <button class="btn-copy">
+                    Copy All
+                </button>
             </div>
         </div>
     </div>
@@ -184,24 +187,28 @@
             $(".copy-area").each(function () {
                 $(this).on("click", "p", function () {
                     ((t) => {
-                        const e = document.createElement("textarea");
-                        (e.value = t),
-                            document.body.appendChild(e),
-                            e.select(),
-                            document.execCommand("copy"),
-                            document.body.removeChild(e);
+                        copyText(t)
+                        changeInputVal(t)
                     })($(this).text());
-                    var t = $(this),
-                        e = $(".copy-area p").not(t);
+
+                    var t = $(this);
                     // finish copy
                     var span = t.parent().find('span');
                     span.show();
                     setTimeout(() => {
                         span.hide();
                     }, 1000)
-
-                    // c(t, "done :)", "000", ".1"), p(e);
                 })
+            })
+
+            // Copy All
+            $(".btn-copy").on('click', function () {
+                copyText($("#mytext").val())
+
+                $(this).text("Copied!")
+                setTimeout(() => {
+                    $(this).text("Copy All")
+                }, 1000)
             })
 
 
@@ -248,14 +255,31 @@
                 }
 
             })
+
+            function copyText(t) {
+                const e = document.createElement("textarea");
+                (e.value = t),
+                    document.body.appendChild(e),
+                    e.select(),
+                    document.execCommand("copy"),
+                    document.body.removeChild(e);
+
+            }
+
+            function click(element) {
+                element.on('click', function () {
+                    element.removeClass('active')
+                    $(this).addClass('active')
+                })
+            }
+
+            function changeInputVal(val) {
+                var originalval = $("#mytext").val();
+                // console.log($("#myText"))
+                $("#mytext").val(originalval + val);
+            }
         })
 
-        function click(element) {
-            element.on('click', function () {
-                element.removeClass('active')
-                $(this).addClass('active')
-            })
-        }
 
         // // v is the emoji, element is the parentNode
         function setTexts(v, element) {
@@ -263,32 +287,6 @@
                 el = $('<div class="item-10 flex-item copy-wrapper"><span class="copy">copied!</span></div>').append(l);
             $(element).append(el)
         }
-        function u(t, e) {
-            if (!t) return "";
-            var test = Number(t);
-            if (isNaN(test)) {
-                var a = Array.from(
-                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                );
-            } else {
-                var a = Array.from(
-                    "0123456789"
-                );
-            }
-            for (
-                var n = Array.from(e),
-                r = t,
-                i = 0;
-                i < a.length;
-                i++
-            ) {
-                var o = a[i],
-                    s = n[i];
-                r = r.split(o).join(s);
-            }
-            return r;
-        }
-
 
         $.getJSON('emoji.json', function (data) {
             $.each(data, function (infoIndex, info) {

@@ -88,6 +88,9 @@
             <div class="input-wrapper">
                 <i class="pen-icon" aria-label="Icon of Pencil"></i>
                 <input id="mytext" placeholder="𝓨𝓸𝓾𝓻 𝓕𝓪𝓷𝓬𝔂 𝓣𝓮𝔁𝓽 𝓗𝓮𝓻𝓮">
+                <button class="btn-copy">
+                    Copy All
+                </button>
             </div>
         </div>
     </div>
@@ -95,72 +98,72 @@
         <aside class="bd-sidebar">
             <nav id="bd-patterns-nav" aria-label="Patterns navigation">
                 <ul class="bg-links">
-                    <li><a class="category active" href="#st-content">Ø Standard
+                    <li><a class="category active" href="#st-content">Standard
                         </a>
                     </li>
-                    <li><a class="category" href="#gepu-content">⁂ Punctuation
+                    <li><a class="category" href="#gepu-content">Punctuation
                         </a>
                     </li>
-                    <li><a class="category" href="#suansu-content">⁺ Superscripts/Subscripts</a>
+                    <li><a class="category" href="#suansu-content">Superscripts/Subscripts</a>
                     </li>
-                    <li><a class="category" href="#cusy-content">₵ Currency Symbols
+                    <li><a class="category" href="#cusy-content">Currency Symbols
                         </a>
                     </li>
-                    <li><a class="category" href="#grch-content">ω Greek Characters
+                    <li><a class="category" href="#grch-content">Greek Characters
                         </a>
                     </li>
-                    <li><a class="category" href="#nufo-content">ↀ Number Forms</a>
+                    <li><a class="category" href="#nufo-content">Number Forms</a>
                     </li>
-                    <li><a class="category" href="#ar-content">↻ Arrows</a>
+                    <li><a class="category" href="#ar-content">Arrows</a>
                     </li>
-                    <li><a class="category" href="#maop-content">⊡ Mathematical Operators</a>
+                    <li><a class="category" href="#maop-content">Mathematical Operators</a>
                     </li>
-                    <li><a class="category" href="#masy-content">⦿ Math Symbols
+                    <li><a class="category" href="#masy-content">Math Symbols
                         </a>
                     </li>
-                    <li><a class="category" href="#mite-content">⎈ Misc. Technical
+                    <li><a class="category" href="#mite-content">Misc. Technical
                         </a>
                     </li>
-                    <li><a class="category" href="#enal-content">⓵ Enclosed Alphanumerics
+                    <li><a class="category" href="#enal-content">Enclosed Alphanumerics
                         </a>
                     </li>
-                    <li><a class="category" href="#bodr-content">╩ Box Drawing
+                    <li><a class="category" href="#bodr-content">Box Drawing
                         </a>
                     </li>
-                    <li><a class="category" href="#blel-content">▜ Block Elements
+                    <li><a class="category" href="#blel-content">Block Elements
                         </a>
                     </li>
-                    <li><a class="category" href="#gosh-content">▦ Geometric Shapes
+                    <li><a class="category" href="#gosh-content">Geometric Shapes
                         </a>
                     </li>
-                    <li><a class="category" href="#misy-content">☂ Misc. Symbols
+                    <li><a class="category" href="#misy-content">Misc. Symbols
                         </a>
                     </li>
-                    <li><a class="category" href="#di-content">❤ Dingbats
+                    <li><a class="category" href="#di-content">Dingbats
                         </a>
                     </li>
-                    <li><a class="category" href="#brpa-content">⡇ Braille Patterns
+                    <li><a class="category" href="#brpa-content">Braille Patterns
                         </a>
                     </li>
-                    <li><a class="category" href="#misyanar-content">⭓ Misc Symbols and Arrows
+                    <li><a class="category" href="#misyanar-content">Misc Symbols and Arrows
                         </a>
                     </li>
-                    <li><a class="category" href="#musy-content">𝆧 Musical Symbols
+                    <li><a class="category" href="#musy-content">Musical Symbols
                         </a>
                     </li>
-                    <li><a class="category" href="#doti-content">🀰 Domino Tiles
+                    <li><a class="category" href="#doti-content">Domino Tiles
                         </a>
                     </li>
-                    <li><a class="category" href="#plca-content">🂠 Playing Cards
+                    <li><a class="category" href="#plca-content">Playing Cards
                         </a>
                     </li>
-                    <li><a class="category" href="#em-content">😀 Emoticons
+                    <li><a class="category" href="#em-content">Emoticons
                         </a>
                     </li>
-                    <li><a class="category" href="#pi-content">🍄 Pictographs
+                    <li><a class="category" href="#pi-content">Pictographs
                         </a>
                     </li>
-                    <li><a class="category" href="#tr-content">🚀 Transport/Map
+                    <li><a class="category" href="#tr-content">Transport/Map
                         </a>
                     </li>
 
@@ -302,26 +305,29 @@
             $(".copy-area").each(function () {
                 $(this).on("click", "p", function () {
                     ((t) => {
-                        const e = document.createElement("textarea");
-                        (e.value = t),
-                            document.body.appendChild(e),
-                            e.select(),
-                            document.execCommand("copy"),
-                            document.body.removeChild(e);
+                        copyText(t)
+                        changeInputVal(t)
                     })($(this).text());
-                    var t = $(this),
-                        e = $(".copy-area p").not(t);
+
+                    var t = $(this);
                     // finish copy
                     var span = t.parent().find('span');
                     span.show();
                     setTimeout(() => {
                         span.hide();
                     }, 1000)
-
-                    // c(t, "done :)", "000", ".1"), p(e);
                 })
             })
 
+            // Copy All
+            $(".btn-copy").on('click', function () {
+                copyText($("#mytext").val())
+
+                $(this).text("Copied!")
+                setTimeout(() => {
+                    $(this).text("Copy All")
+                }, 1000)
+            })
 
             // Click Aside Animation
             click($('#bd-patterns-nav .category'));
@@ -337,7 +343,7 @@
                 // Watch position
                 function wacth(element, target) {
                     element.each(function () {
-                        if ($(this).offset().top <= scrollTop + 100) {
+                        if ($(this).offset().top <= scrollTop + 300) {
                             var id = $(this)[0].id;
                             target.each(function () {
                                 if ($(this).attr('href') === "#" + id) {
@@ -365,16 +371,32 @@
                     }
                 }
             })
+
+            function copyText(t) {
+                const e = document.createElement("textarea");
+                (e.value = t),
+                    document.body.appendChild(e),
+                    e.select(),
+                    document.execCommand("copy"),
+                    document.body.removeChild(e);
+
+            }
+
+            function click(element) {
+                element.on('click', function () {
+                    element.removeClass('active')
+                    $(this).addClass('active')
+                })
+            }
+
+            function changeInputVal(val) {
+                var originalval = $("#mytext").val();
+                // console.log($("#myText"))
+                $("#mytext").val(originalval + val);
+            }
         })
 
-        function click(element) {
-            element.on('click', function () {
-                element.removeClass('active')
-                $(this).addClass('active')
-            })
-        }
-
-        // // v is the emoji, element is the parentNode
+        // v is the emoji, element is the parentNode
         function setTexts(v, element) {
             for (var i = 0; i < v.length; i++) {
                 var l = $(`<p>${v[i]}</;>`),
@@ -382,32 +404,6 @@
                 $(element).append(el)
             }
         }
-        function u(t, e) {
-            if (!t) return "";
-            var test = Number(t);
-            if (isNaN(test)) {
-                var a = Array.from(
-                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                );
-            } else {
-                var a = Array.from(
-                    "0123456789"
-                );
-            }
-            for (
-                var n = Array.from(e),
-                r = t,
-                i = 0;
-                i < a.length;
-                i++
-            ) {
-                var o = a[i],
-                    s = n[i];
-                r = r.split(o).join(s);
-            }
-            return r;
-        }
-
 
         $.getJSON('unicode.json', function (data) {
             $.each(data, function (infoIndex, info) {
@@ -427,12 +423,15 @@
                         e = info['end'],
                         l = [];
                     while (j <= info['end']) {
-                        // var ch = punycode.ucs2.encode([j]);
-                        // var ch = String.fromCharCode(parseInt(j, 16));
-                        var ch = `&#${j};`
-                        if (ch) {
+                        if (j) {
+                            var ch = `&#${j};`
+                            if (j == 127) {
+                                console.log(ch)
+                            }
                             l.push(ch);
+
                         }
+
                         j++;
                     }
                     return l
@@ -440,6 +439,7 @@
             })
 
         })
+
 
     </script>
 </body>

@@ -22,7 +22,7 @@ body {
   --sidebar-hover-color: rgba(0, 0, 0, 0.1);
   --font-color: #000;
   --font-hover-color: #0c82e6;
-  --bg-hover-color: #0c80e62f;
+  --bg-hover-color: #7ab8ee23;
   --mytext-color: #ced4da;
   background: var(--background-color);
   color: var(--font-color);
@@ -70,18 +70,6 @@ body {
   transition: 0.2s linear;
 }
 
-.copy-wrapper {
-  position: relative;
-}
-.copy-wrapper:hover {
-  color: var(--font-hover-color);
-}
-.copy-wrapper:hover p {
-  background-color: var(--bg-hover-color);
-}
-.copy-wrapper:hover span {
-  opacity: 1;
-}
 /* ***E-APPLY TO ALL PAGES */
 
 /* Header */
@@ -203,6 +191,20 @@ aside nav li a.active {
 h4 {
   margin-top: 0.9rem;
 }
+
+.copy-wrapper {
+  position: relative;
+}
+.copy-wrapper:hover {
+  color: var(--font-hover-color);
+}
+.copy-wrapper:hover p {
+  background-color: var(--bg-hover-color);
+  transform: scale(1.2);
+}
+.copy-wrapper:hover span {
+  opacity: 1;
+}
 .content-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -216,21 +218,23 @@ h4 {
 .content-wrapper .item-10 {
   width: 70px;
 }
-
-.content-wrapper .flex-item p {
+.copy-area {
   cursor: pointer;
+}
+.content-wrapper .flex-item p {
   width: 100%;
+  min-height: 36px;
   padding: 0.3rem 0;
   margin: 0;
   border-radius: 0.2em;
   display: inline-block;
-  border: 1px solid currentColor;
+  border: 1px solid var(--mytext-color);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 1rem;
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
 }
-
 /* Text Area */
 .text-area {
   width: 100%;
@@ -277,9 +281,54 @@ h4 {
   top: 0;
   z-index: 1;
 }
-
+.fixedText ~ .bd-layout {
+  top: 8rem;
+}
 .fixedAside {
   position: fixed;
   bottom: 0;
   top: 5.5rem;
+}
+.btn-copy {
+  margin-right: 0.5rem;
+  cursor: pointer;
+  width: 6rem;
+  display: inline-block;
+  padding: 0.4rem 0;
+  border-radius: 0.8rem;
+  border: none;
+  color: #fff;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.btn-copy:hover::before {
+  width: 100%;
+}
+
+.btn-copy:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: var(--font-hover-color);
+  border-radius: 0.8rem;
+  z-index: -2;
+}
+.btn-copy:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #0c4a81;
+  transition: all 0.3s;
+  border-radius: 0.8rem;
+  z-index: -1;
 }
