@@ -154,6 +154,7 @@ h1 {
 }
 
 .navbar-toggler {
+  padding: 0;
   cursor: pointer;
   background-color: transparent;
   border: none;
