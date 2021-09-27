@@ -398,15 +398,18 @@
             $(window).scroll(function () {
                 var scrollTop = $(this).scrollTop();
 
+
                 setSideBar()
                 wacth($('.bd-content'), $('#bd-patterns-nav .category'))
-                wacth($('.sub-content'), $('.collapse-link'))
+                // wacth($('.sub-content'), $('.collapse-link'))
+
 
                 // Watch position
                 function wacth(element, target) {
                     element.each(function () {
                         if ($(this).offset().top <= scrollTop + 300) {
                             var id = $(this)[0].id;
+                            // Change CSS
                             target.each(function () {
                                 if ($(this).attr('href') === "#" + id) {
                                     if (!$(this).hasClass('active')) {
@@ -415,7 +418,8 @@
                                     }
                                 }
                             })
-                        }
+                        };
+
                         ;
                     })
                 }
@@ -462,35 +466,27 @@
         }
 
         $.getJSON('unicode.json', function (data) {
-            var i = 0;
             $.each(data, function (infoIndex, info) {
-                if (i <= 100) {
-                    var category = info['category'].split(" ");
-                    var idStr = '';
-                    $.each(category, function (dataIndex, data) {
-                        idStr += data.toLowerCase().slice(0, 2);
+                var category = info['category'].split(" ");
+                var idStr = '';
+                $.each(category, function (dataIndex, data) {
+                    idStr += data.toLowerCase().slice(0, 2);
+                })
 
-                    })
-
-                    var node = $(`#${idStr}-content .copy-area`),
-                        l = getUniList(info);
-
-                    setTexts(l, node);
-                    function getUniList(info) {
-                        var j = info['start'],
-                            e = info['end'],
-                            l = [];
-                        while (j <= info['end']) {
-                            if (j) {
-                                var ch = `&#${j};`
-                                l.push(ch);
-                                i++;
-                            }
-
-                            j++;
+                setTexts(getUniList(info), $(`#${idStr}-content .copy-area`));
+                function getUniList(info) {
+                    var j = info['start'],
+                        e = info['end'],
+                        l = [];
+                    while (j <= info['end']) {
+                        if (j) {
+                            var ch = `&#${j};`
+                            l.push(ch);
                         }
-                        return l
+
+                        j++;
                     }
+                    return l
                 }
             })
 
