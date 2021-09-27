@@ -67,28 +67,36 @@
 <body>
   <header>
     <div class="header_container container">
-      <h1>
-        <a title="Fancy Font Text Generator" href="https://fancy-text-generator.com/">𝔉𝔞𝔫𝔠𝔶 𝔉𝔬𝔫𝔱 𝔗𝔢𝔵𝔱
-          𝔊𝔢𝔫𝔢𝔯𝔞𝔱𝔬𝔯</a>
-      </h1>
       <nav aria-label="Main">
-        <ul>
-          <li><a class="darkMode" role="button" title="Use light theme" id="dark-toggler"
-              aria-label="Toggle DarkMode"></a>
-          </li>
-          <li><a class="underline" href="home.html" aria-current="page">Home</a></li>
-          <li><a class="underline" href="patterns.html">Patterns</a></li>
-          <li><a class="underline" href="iosEmojis.html">Ios Emojis</a></li>
-          <li><a class="underline" href="">Android Emojis</a></li>
-          <li><a class="underline" href="unicode.html">Unicode</a></li>
-        </ul>
+        <h1>
+          <a title="Fancy Font Text Generator" href="https://fancy-text-generator.com/">𝔉𝔞𝔫𝔠𝔶 𝔉𝔬𝔫𝔱 𝔗𝔢𝔵𝔱
+            𝔊𝔢𝔫𝔢𝔯𝔞𝔱𝔬𝔯</a>
+        </h1>
+        <button class="navbar-toggler collapsed" type="button" aria-controls="bdNavbar" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi" fill="#fff" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
+            </path>
+          </svg>
+        </button>
+        <div id="bdNavbar">
+          <a class="darkMode" role="button" title="Use light theme" id="dark-toggler" aria-label="Toggle DarkMode"></a>
+          <ul>
+            <li><a class="underline" href="home.html" aria-current="page">Home</a></li>
+            <li><a class="underline" href="patterns.html">Patterns</a></li>
+            <li><a class="underline" href="iosEmojis.html">Ios Emojis</a></li>
+            <li><a class="underline" href="">Android Emojis</a></li>
+            <li><a class="underline" href="unicode.html">Unicode</a></li>
+          </ul>
+        </div>
       </nav>
     </div>
   </header>
   <div class="container container-xxl wrap">
     <h2>ᴀᴋᴀ. ɪɴsᴛᴀɢʀᴀᴍ ᴛᴀᴛᴛᴏᴏ ғᴏɴᴛ ɢᴇɴᴇʀᴀᴛᴏʀ</h2>
     <div id="input">
-      <textarea id="src" placeholder="Type or copy your text here(◍⁀‿⁀◍)ノ" data-gramm_editor="false"></textarea>
+      <textarea id="src" placeholder="Type or copy your text here:)" data-gramm_editor="false"></textarea>
     </div>
     <div id="copyandpaste"></div>
     <div id="out">
@@ -157,6 +165,11 @@
         }
       };
     }
+
+    $('.navbar-toggler').click(function () {
+      console.log($(this))
+      $(this).toggleClass('collapsed')
+    })
 
     function aloadJS(t, e) {
       var a = document;
