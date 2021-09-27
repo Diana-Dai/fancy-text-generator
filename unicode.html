@@ -379,12 +379,17 @@
                 }
 
             })
-
-
             // Click Aside Animation
-            click($('#bd-patterns-nav .category'));
-            click($('.collapse-link'));
-
+            $('#bd-patterns-nav .category').on('click', function () {
+                $(this).toggleClass('active')
+                if ($(".bd-sidebar").hasClass('show')) {
+                    $(".bd-sidebar").removeClass('show')
+                    $('.bd-sidebar-toggle').addClass('collapsed')
+                }
+            })
+            $('.collapse-link').on('click', function () {
+                $(this).toggleClass('active')
+            })
             $(window).scroll(function () {
                 var scrollTop = $(this).scrollTop();
 
@@ -433,11 +438,6 @@
 
             }
 
-            function click(element) {
-                element.on('click', function () {
-                    $(this).toggleClass('active')
-                })
-            }
 
             function changeInputVal(val) {
                 var originalval = $("#mytext").val();

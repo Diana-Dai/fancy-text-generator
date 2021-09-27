@@ -80,7 +80,7 @@ h4 {
 }
 
 .copy {
-  display: n;
+  display: none;
   pointer-events: none;
   cursor: pointer;
   position: absolute;
@@ -191,7 +191,7 @@ h1 {
   margin-left: 280px;
 }
 /* Aside */
-aside {
+.bd-sidebar {
   width: 250px;
   overflow: scroll;
   position: absolute;
@@ -246,22 +246,22 @@ aside {
   display: block;
 }
 
-aside nav li {
+.bd-sidebar nav li {
   font-size: 0.9rem;
   color: var(--sidebar-color);
 }
-aside nav li a {
+.bd-sidebar nav li a {
   display: inline-block;
   margin-top: 0.25rem;
   padding: 0.2rem 0.5rem;
   transition: all 0.2s linear;
 }
-aside nav li a.active {
+.bd-sidebar nav li a.active {
   color: var(--font-color);
   font-weight: 500;
 }
 .bd-content {
-  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
 }
 h4 {
   margin-top: 0.9rem;
@@ -468,6 +468,7 @@ h4 {
     padding: 0 1rem;
   }
   .bd-sidebar-toggle {
+    padding: 0 0.4rem;
     cursor: pointer;
     background-color: transparent;
     color: var(--font-color);
@@ -483,7 +484,6 @@ h4 {
     display: none;
   }
   .bd-sidebar {
-    height: 0;
     opacity: 0;
     transition: height 0.2s, opacity 0.1s;
     background-color: #f8f9fa;
@@ -496,9 +496,10 @@ h4 {
     visibility: hidden;
   }
   .bd-sidebar.show {
-    height: 370px;
     opacity: 1;
+    z-index: 1;
   }
+
   .bd-sidebar.show nav {
     visibility: visible;
   }
@@ -511,11 +512,15 @@ h4 {
   .content-wrapper .item-50 {
     width: 100%;
   }
-  aside {
+
+  .bd-sidebar {
+    z-index: -1;
+    position: fixed;
+    top: 7rem;
     width: 100%;
-    margin-bottom: 1rem;
-    overflow: visible;
-    position: relative;
+  }
+  .fixedText ~ .bd-layout .bd-sidebar {
+    top: 3rem;
   }
 }
 

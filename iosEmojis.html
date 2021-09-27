@@ -57,7 +57,6 @@
   }
 }</script>
     <style>
-
     </style>
     <script src="js/jquery.js"></script>
     <script src="js/js"></script>
@@ -263,8 +262,16 @@
             })
 
             // Click Aside Animation
-            click($('#bd-patterns-nav .category'));
-            click($('.collapse-link'));
+            $('#bd-patterns-nav .category').on('click', function () {
+                $(this).toggleClass('active')
+                if ($(".bd-sidebar").hasClass('show')) {
+                    $(".bd-sidebar").removeClass('show')
+                    $('.bd-sidebar-toggle').addClass('collapsed')
+                }
+            })
+            $('.collapse-link').on('click', function () {
+                $(this).toggleClass('active')
+            })
 
             $(window).scroll(function () {
                 var scrollTop = $(this).scrollTop();
@@ -304,16 +311,6 @@
                 }
 
             })
-
-            function copyText(t) {
-                const e = document.createElement("textarea");
-                (e.value = t),
-                    document.body.appendChild(e),
-                    e.select(),
-                    document.execCommand("copy"),
-                    document.body.removeChild(e);
-
-            }
 
             function click(element) {
                 element.on('click', function () {
