@@ -49,7 +49,7 @@ h3 {
 }
 h4 {
   font-size: 1.2rem;
-  line-height: 1.5;
+  line-height: 2;
 }
 h1,
 h2,
@@ -59,7 +59,7 @@ h4 {
 }
 
 #links {
-  margin: 90px auto 80px;
+  margin: 2rem auto 1.5rem;
   display: inline-block;
   text-align: center;
   width: 100%;
@@ -254,11 +254,14 @@ h3 {
   width: 80%;
   margin: 0 auto;
 }
+#intro {
+  margin-top: 0.8rem;
+}
 #intro ul {
   padding-left: 2rem;
 }
 #intro ul li {
-  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
 }
 #intro p strong {
   background: #ffe;
@@ -295,7 +298,7 @@ h3 {
   }
 
   h2 {
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin: 0.5rem 0;
   }
 
@@ -342,6 +345,10 @@ h3 {
   }
   .title {
     display: none;
+  }
+  #links {
+    display: flex;
+    flex-direction: column;
   }
 }
 
