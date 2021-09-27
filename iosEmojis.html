@@ -318,6 +318,17 @@
                 })
             }
 
+
+            function copyText(t) {
+                const e = document.createElement("textarea");
+                (e.value = t),
+                    document.body.appendChild(e),
+                    e.select(),
+                    document.execCommand("copy"),
+                    document.body.removeChild(e);
+
+            }
+
             function changeInputVal(val) {
                 var originalval = $("#mytext").val();
                 $("#mytext").val(originalval + val);
