@@ -80,6 +80,7 @@ h4 {
 }
 
 .copy {
+  display: none;
   pointer-events: none;
   cursor: pointer;
   position: absolute;
