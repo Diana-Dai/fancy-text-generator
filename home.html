@@ -60,23 +60,24 @@
 
   </style>
   <script src="js/jquery.js"></script>
-  <script src="js/js"></script>
-  <script src="js/addthis_widget.js"></script>
+  <!-- <script src="js/js"></script> -->
+  <!-- <script src="js/addthis_widget.js"></script> -->
 </head>
 
 <body>
   <header>
     <div class="header_container container">
       <nav aria-label="Main">
-        <h1>
-          <a class="title" title="Fancy Font Text Generator" href="https://fancy-text-generator.com/">𝔉𝔞𝔫𝔠𝔶
+        <h1 class="title">
+          <a title="Fancy Font Text Generator" href="https://fancy-text-generator.com/">𝔉𝔞𝔫𝔠𝔶
             𝔉𝔬𝔫𝔱
             𝔗𝔢𝔵𝔱
             𝔊𝔢𝔫𝔢𝔯𝔞𝔱𝔬𝔯</a>
-          <a class="myLogo" title="Fancy Font Text Generator" href="https://fancy-text-generator.com/">
-            <img width="35px" height="35px" src="https://fancy-text-generator.com/favicon-76.png"
-              alt=" Fancy Font Text Logo"></a>
         </h1>
+        <span class="myLogo"> <a class="myLogo" title="Fancy Font Text Generator"
+            href="https://fancy-text-generator.com/">
+            <img width="35px" height="35px" src="https://fancy-text-generator.com/favicon-76.png"
+              alt=" Fancy Font Text Logo"></a></span>
         <button class="navbar-toggler collapsed" type="button" aria-controls="bdNavbar" aria-expanded="false"
           aria-label="Toggle navigation">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi" fill="#fff" viewBox="0 0 16 16">
@@ -312,7 +313,7 @@
       $("#src").bind("keyup input contextmenu", function () {
         d($(this)[0]);
       }),
-        m("h1 a", 0),
+        // m("h1 a", 0),
         m("h2", 6),
         m("h3", 4),
         m("#u1", 2),
