@@ -500,6 +500,9 @@ h1 {
   .fixedText ~ .bd-layout .bd-sidebar {
     top: 3rem;
   }
+  nav .title {
+    display: none;
+  }
 }
 
 @media (min-width: 768px) {
@@ -511,5 +514,8 @@ h1 {
     position: fixed;
     bottom: 0;
     top: 5.5rem;
+  }
+  .myLogo {
+    display: none;
   }
 }
