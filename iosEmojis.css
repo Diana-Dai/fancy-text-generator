@@ -80,7 +80,7 @@ h4 {
 }
 
 .copy {
-  display: none;
+  display: n;
   pointer-events: none;
   cursor: pointer;
   position: absolute;
@@ -492,9 +492,15 @@ h4 {
   .dark .bd-sidebar {
     background-color: #181818;
   }
+  .bd-sidebar nav {
+    visibility: hidden;
+  }
   .bd-sidebar.show {
     height: 370px;
     opacity: 1;
+  }
+  .bd-sidebar.show nav {
+    visibility: visible;
   }
   .bd-sidebar nav {
     padding: 2rem 1rem 0 1rem;
