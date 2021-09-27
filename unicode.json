@@ -79,5 +79,73 @@
      "category":"Control Pictures",
      "start":9216,
      "end":9216 },
- 
+ {
+     "category":"Enclosed Alphanumerics",
+     "start":9312,
+     "end":9471 },
+ {
+     "category":"Box Drawing",
+     "start":9472,
+     "end":9599 },
+ {
+     "category":"Block Elements",
+     "start":9600,
+     "end":9631 },
+ {
+     "category":"Geometric Shapes",
+     "start":9632,
+     "end":9727 },
+ {
+     "category":"Geometric Shapes",
+     "start":9632,
+     "end":9727 },
+ {
+     "category":"Geometric Shapes",
+     "start":128896,
+     "end":129023 },
+ {
+     "category":"Miscellaneous Symbols",
+     "start":9728,
+     "end":9983 },
+ {
+     "category":"Dingbats",
+     "start":9984,
+     "end":10175 },
+ {
+     "category":"Braille Patterns",
+     "start":10240,
+     "end":10495 },
+ {
+     "category":"Misc Symbols and Arrows",
+     "start":11008,
+     "end":11263 },
+ {
+     "category":"Musical Symbols",
+     "start":119040,
+     "end":119295 },
+ {
+     "category":"Domino Tiles",
+     "start":127024,
+     "end":127135 },
+ {
+     "category":"Playing Cards",
+     "start":127136,
+     "end":127231},
+ {
+     "category":"Emoticons",
+     "start":128512,
+     "end":128591 },
+ {
+     "category":"Pictographs",
+     "start":127744,
+     "end":128511 },
+ {
+     "category":"Pictographs",
+     "start":129280,
+     "end":129535 },
+ {
+     "category":"Transport/Map",
+     "start":128640,
+     "end":128767 }
+
 ]
