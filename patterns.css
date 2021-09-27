@@ -78,7 +78,7 @@ h4 {
   color: var(--font-color);
 }
 .copy {
-  /* display: none; */
+  pointer-events: none;
   cursor: pointer;
   position: absolute;
   padding: 0.3rem 0.4rem;
@@ -201,7 +201,6 @@ aside {
 
 .bd-sidebar .bg-links {
   margin-top: 0;
-
   text-align: left;
 }
 
@@ -327,9 +326,7 @@ h4 {
 .copy-wrapper:hover span {
   opacity: 1;
 }
-.copy-wrapper .show {
-  opacity: 1;
-}
+
 .content-wrapper .flex-item p {
   width: 100%;
   min-height: 36px;
@@ -341,9 +338,7 @@ h4 {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   transition: transform 0.3s ease;
 }
-.content-wrapper .item-33 p:hover {
-  color: var(--font-hover-color);
-}
+
 .copy {
   right: 1.5rem;
 }
@@ -534,6 +529,9 @@ h4 {
     transition: height 0.2s, opacity 0.1s;
     background-color: #f8f9fa;
     border-bottom: 1px solid var(--border-color);
+  }
+  .dark .bd-sidebar {
+    background-color: #181818;
   }
   .bd-sidebar.show {
     height: 200px;

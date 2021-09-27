@@ -79,7 +79,7 @@ h4 {
 }
 
 .copy {
-  display: none;
+  pointer-events: none;
   cursor: pointer;
   position: absolute;
   padding: 0.3rem 0.4rem;
@@ -242,10 +242,6 @@ aside nav li a.active {
 }
 .bd-content {
   margin-bottom: 1.5rem;
-}
-
-h4 {
-  margin-top: 0.9rem;
 }
 
 .copy-wrapper {
@@ -470,6 +466,9 @@ h4 {
     transition: height 0.2s, opacity 0.1s;
     background-color: #f8f9fa;
     border-bottom: 1px solid var(--border-color);
+  }
+  .dark .bd-sidebar {
+    background-color: #181818;
   }
   .bd-sidebar.show {
     height: 890px;

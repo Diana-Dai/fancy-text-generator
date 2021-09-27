@@ -166,7 +166,6 @@
     }
 
     $('.navbar-toggler').click(function () {
-      console.log($(this))
       $(this).toggleClass('collapsed')
     })
 
@@ -243,7 +242,6 @@
       function l() {
         s();
         var e = $("#src").val();
-        console.log(e);
         $("#out").empty();
         for (var r = 0; r < t.length; r++) {
           var i = t[r],
@@ -269,7 +267,6 @@
           $("#out div").removeClass("working")
       }
       function d(t) {
-        console.log(t.scrollHeight);
         // (t.style.height = "5px"), (t.style.height = t.scrollHeight + "px");
       }
       function u(t, e) {
@@ -346,13 +343,9 @@
           // finish copy
           var span = t.parent().find('span');
           span.text('Copied!');
-          span.addClass('show');
-          setTimeout(() => {
-            span.removeClass('show');
-          }, 1000)
           setTimeout(() => {
             span.text('Click To Copy');
-          }, 2000)
+          }, 1000)
         }),
         aloadJS(
           "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d4ef23adc8f9863",
@@ -367,7 +360,6 @@
     $(window).scroll(function () {
       var _scrolltop = $('#out').offset().top;
       var scrollTop = $(this).scrollTop();
-      console.log(scrollTop, _scrolltop)
       if (scrollTop >= _scrolltop) {
         $("#input").addClass('fixedTop');
       } else {

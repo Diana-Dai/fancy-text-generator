@@ -364,7 +364,6 @@
 
             // Navbar toggle
             $('.navbar-toggler').click(function () {
-                console.log($(this))
                 $(this).toggleClass('collapsed')
             })
 
@@ -414,7 +413,6 @@
                 // Sticky SlideBar & Test Area
                 function setSideBar() {
                     var layoutH = $('header').height();
-                    // console.log(layoutH)
                     if (scrollTop >= layoutH) {
                         $("aside").addClass('fixedAside');
                         $(".text-area").addClass('fixedText');
@@ -443,7 +441,6 @@
 
             function changeInputVal(val) {
                 var originalval = $("#mytext").val();
-                // console.log($("#myText"))
                 $("#mytext").val(originalval + val);
             }
 

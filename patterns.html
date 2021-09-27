@@ -254,13 +254,9 @@
                     // finish copy
                     var span = t.parent().find('span');
                     span.text('Copied!');
-                    span.addClass('show');
-                    setTimeout(() => {
-                        span.removeClass('show');
-                    }, 1000)
                     setTimeout(() => {
                         span.text('Click To Copy');
-                    }, 2000)
+                    }, 1000)
                 })
             })
 
@@ -340,7 +336,6 @@
                 // Sticky SlideBar & Test Area
                 function setSideBar() {
                     var layoutH = $('header').height();
-                    // console.log(layoutH)
                     if (scrollTop >= layoutH) {
                         $("aside").addClass('fixedAside');
                         $(".text-area").addClass('fixedText');
@@ -368,7 +363,6 @@
 
             function changeInputVal(val) {
                 var originalval = $("#mytext").val();
-                // console.log($("#myText"))
                 $("#mytext").val(originalval + val);
             }
 
