@@ -315,6 +315,11 @@ h3 {
   header nav {
     flex-wrap: wrap;
   }
+  .navbar-toggler {
+    position: absolute;
+    right: 1rem;
+    top: 0.9rem;
+  }
   .navbar-toggler.collapsed ~ #bdNavbar ul {
     height: 0px;
     opacity: 0;
@@ -347,7 +352,7 @@ h3 {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 760px) {
   .navbar-toggler {
     display: none;
   }
