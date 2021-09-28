@@ -134,72 +134,72 @@
         <aside class="bd-sidebar">
             <nav id="bd-patterns-nav" aria-label="Patterns navigation">
                 <ul class="bg-links">
-                    <li><a class="category active" href="#st-content">Standard
+                    <li><a class="category active" role="button" data-href="#st-content">Standard
                         </a>
                     </li>
-                    <li><a class="category" href="#gepu-content">Punctuation
+                    <li><a class="category" role="button" data-href="#gepu-content">Punctuation
                         </a>
                     </li>
-                    <li><a class="category" href="#suansu-content">Superscripts/Subscripts</a>
+                    <li><a class="category" role="button" data-href="#suansu-content">Superscripts/Subscripts</a>
                     </li>
-                    <li><a class="category" href="#cusy-content">Currency Symbols
+                    <li><a class="category" role="button" data-href="#cusy-content">Currency Symbols
                         </a>
                     </li>
-                    <li><a class="category" href="#grch-content">Greek Characters
+                    <li><a class="category" role="button" data-href="#grch-content">Greek Characters
                         </a>
                     </li>
-                    <li><a class="category" href="#nufo-content">Number Forms</a>
+                    <li><a class="category" role="button" data-href="#nufo-content">Number Forms</a>
                     </li>
-                    <li><a class="category" href="#ar-content">Arrows</a>
+                    <li><a class="category" role="button" data-href="#ar-content">Arrows</a>
                     </li>
-                    <li><a class="category" href="#maop-content">Mathematical Operators</a>
+                    <li><a class="category" role="button" data-href="#maop-content">Mathematical Operators</a>
                     </li>
-                    <li><a class="category" href="#masy-content">Math Symbols
+                    <li><a class="category" role="button" data-href="#masy-content">Math Symbols
                         </a>
                     </li>
-                    <li><a class="category" href="#mite-content">Misc. Technical
+                    <li><a class="category" role="button" data-href="#mite-content">Misc. Technical
                         </a>
                     </li>
-                    <li><a class="category" href="#enal-content">Enclosed Alphanumerics
+                    <li><a class="category" role="button" data-href="#enal-content">Enclosed Alphanumerics
                         </a>
                     </li>
-                    <li><a class="category" href="#bodr-content">Box Drawing
+                    <li><a class="category" role="button" data-href="#bodr-content">Box Drawing
                         </a>
                     </li>
-                    <li><a class="category" href="#blel-content">Block Elements
+                    <li><a class="category" role="button" data-href="#blel-content">Block Elements
                         </a>
                     </li>
-                    <li><a class="category" href="#gosh-content">Geometric Shapes
+                    <li><a class="category" role="button" data-href="#gosh-content">Geometric Shapes
                         </a>
                     </li>
-                    <li><a class="category" href="#misy-content">Misc. Symbols
+                    <li><a class="category" role="button" data-href="#misy-content">Misc. Symbols
                         </a>
                     </li>
-                    <li><a class="category" href="#di-content">Dingbats
+                    <li><a class="category" role="button" data-href="#di-content">Dingbats
                         </a>
                     </li>
-                    <li><a class="category" href="#brpa-content">Braille Patterns
+                    <li><a class="category" role="button" data-href="#brpa-content">Braille Patterns
                         </a>
                     </li>
-                    <li><a class="category" href="#misyanar-content">Symbols and Arrows
+                    <li><a class="category" role="button" data-href="#misyanar-content">Symbols and Arrows
                         </a>
                     </li>
-                    <li><a class="category" href="#musy-content">Musical Symbols
+                    <li><a class="category" role="button" data-href="#musy-content">Musical Symbols
                         </a>
                     </li>
-                    <li><a class="category" href="#doti-content">Domino Tiles
+                    <li><a class="category" role="button" data-href="#doti-content">Domino Tiles
                         </a>
                     </li>
-                    <li><a class="category" href="#plca-content">Playing Cards
+                    <li><a class="category" role="button" data-href="#plca-content">Playing Cards
                         </a>
                     </li>
-                    <li><a class="category" href="#em-content">Emoticons
+                    <li><a class="category" role="button" data-href="#em-content">Emoticons
                         </a>
                     </li>
-                    <li><a class="category" href="#pi-content">Pictographs
+                    <li><a class="category" role="button" data-href="#pi-content">Pictographs
                         </a>
                     </li>
-                    <li><a class="category" href="#tr-content">Transport/Map
+                    <li><a class="category" role="button" data-href="#tr-content">Transport/Map
                         </a>
                     </li>
 
@@ -329,12 +329,12 @@
                 <div class="content-wrapper copy-area">
                 </div>
             </div>
-            <div id="links"><a href="https://fancy-text-generator.com/" target="_blank"
-                    title="Fancy Font Text Generator">Fancy
-                    Font Text Generator</a><a href="https://high-qr-code-generator.com/" target="_blank"
-                    title="High Resolution QR Code Generator">QR Code Generator</a><a href="https://www.arealme.com/"
-                    target="_blank" title="ARealMe Quizzes">Super cool online quizzes</a></div>
         </main>
+        <div id="links"><a href="https://fancy-text-generator.com/" target="_blank"
+                title="Fancy Font Text Generator">Fancy
+                Font Text Generator</a><a href="https://high-qr-code-generator.com/" target="_blank"
+                title="High Resolution QR Code Generator">QR Code Generator</a><a href="https://www.arealme.com/"
+                target="_blank" title="ARealMe Quizzes">Super cool online quizzes</a></div>
     </div>
 
     <script>
@@ -409,6 +409,10 @@
                 // Navbar toggle
                 $('.navbar-toggler').click(function () {
                     $(this).toggleClass('collapsed')
+                    // Check if the Sidebar is open
+                    if (!$(this).hasClass('collapsed') && $('.bd-sidebar').hasClass('show')) {
+                        $('.bd-sidebar').removeClass('show')
+                    }
                 })
                 // Sidebar toggle
                 $('.bd-sidebar-toggle').click(function () {
@@ -423,7 +427,6 @@
 
                 })
 
-
                 // Click Aside Animation
                 $('#bd-patterns-nav .category').on('click', function () {
                     clearCls($('#bd-patterns-nav .category'), 'active')
@@ -435,7 +438,7 @@
                     }
 
                     // Change the content
-                    var id = $(this).attr('href').slice(1);
+                    var id = $(this).attr('data-href').slice(1);
                     clearCls($('.bd-content'), 'active')
                     $(`#${id}`).addClass('active');
 

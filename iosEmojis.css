@@ -58,6 +58,7 @@ h4 {
   max-width: 1280px;
 }
 #links {
+  padding-left: 280px;
   margin: 2rem 0 1.5rem 0;
   display: inline-block;
   text-align: center;
@@ -184,6 +185,7 @@ h1 {
 }
 
 .bd-main {
+  min-height: 100vh;
   margin-left: 280px;
 }
 /* Aside */
@@ -192,7 +194,6 @@ h1 {
   overflow: scroll;
   position: absolute;
   top: 0;
-  height: 80;
   white-space: nowrap;
 }
 
@@ -207,6 +208,7 @@ h1 {
 }
 
 .bd-sidebar .category {
+  cursor: pointer;
   width: 11rem;
   line-height: 1.5;
   display: inline-block;
@@ -257,7 +259,11 @@ h1 {
   font-weight: 500;
 }
 .bd-content {
+  display: none;
   margin-top: 1.5rem;
+}
+.bd-content.active {
+  display: block;
 }
 h4 {
   margin-top: 0.9rem;
@@ -307,6 +313,7 @@ h4 {
 
 /* Text Area */
 .text-area {
+  height: 56px;
   width: 100%;
 }
 .text-area .input-container {
@@ -493,29 +500,33 @@ h4 {
   }
   .bd-sidebar {
     opacity: 0;
-    transition: height 0.2s, opacity 0.1s;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.2s, opacity 0.05s;
     background-color: #f8f9fa;
     border-bottom: 1px solid var(--border-color);
   }
   .dark .bd-sidebar {
     background-color: #181818;
   }
-  .bd-sidebar nav {
-    visibility: hidden;
-  }
   .bd-sidebar.show {
+    height: calc(100vh - 70px - 56px);
     opacity: 1;
     z-index: 1;
+    transition: height 0.2s, opacity 0.1s;
+  }
+  .bd-sidebar.show ~ .bd-main {
+    min-height: 250px;
+    height: 0;
+    overflow: hidden;
   }
 
-  .bd-sidebar.show nav {
-    visibility: visible;
-  }
   .bd-sidebar nav {
     padding: 2rem 1rem 0 1rem;
   }
   .bd-main {
     margin-left: 0;
+    transition: height 0.6s;
   }
   .content-wrapper .item-50 {
     width: 100%;
@@ -524,7 +535,7 @@ h4 {
   .bd-sidebar {
     z-index: -1;
     position: fixed;
-    top: 7rem;
+    top: calc(70px + 56px);
     width: 100%;
   }
   .fixedText ~ .bd-layout .bd-sidebar {
@@ -534,6 +545,7 @@ h4 {
     display: none;
   }
   #links {
+    padding-left: 0;
     display: flex;
     flex-direction: column;
   }

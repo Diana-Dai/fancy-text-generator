@@ -133,34 +133,34 @@
         <aside class="bd-sidebar">
             <nav id="bd-patterns-nav" aria-label="Patterns navigation">
                 <ul class="bg-links">
-                    <li><a class="category active" href="#smileys-content">😃 Standard
+                    <li><a class="category active" role="button" data-href="#smileys-content">😃 Standard
                         </a>
                     </li>
-                    <li><a class="category" href="#people-content">👩‍❤️‍👩 People & Body
+                    <li><a class="category" role="button" data-href="#people-content">👩‍❤️‍👩 People & Body
                         </a>
                     </li>
-                    <li><a class="category" href="#animals-content">🐼 Animals & Nature</a>
+                    <li><a class="category" role="button" data-href="#animals-content">🐼 Animals & Nature</a>
                     </li>
-                    <li><a class="category" href="#food-content">🍉 Food & Drink
+                    <li><a class="category" role="button" data-href="#food-content">🍉 Food & Drink
                         </a>
                     </li>
-                    <li><a class="category" href="#travel-content"> 🏖 Travel & Places
+                    <li><a class="category" role="button" data-href="#travel-content"> 🏖 Travel & Places
                         </a>
                     </li>
-                    <li><a class="category" href="#activities-content">🎃 Activities</a>
+                    <li><a class="category" role="button" data-href="#activities-content">🎃 Activities</a>
                     </li>
-                    <li><a class="category" href="#objects-content">👔 Objects</a>
+                    <li><a class="category" role="button" data-href="#objects-content">👔 Objects</a>
                     </li>
-                    <li><a class="category" href="#symbols-content">♻️ Symbols</a>
+                    <li><a class="category" role="button" data-href="#symbols-content">♻️ Symbols</a>
                     </li>
-                    <li><a class="category" href="#flags-content">🚩 Flags
+                    <li><a class="category" data-href="#flags-content">🚩 Flags
                         </a>
                     </li>
                 </ul>
             </nav>
         </aside>
         <main class="bd-main order-1">
-            <div id="smileys-content" class="bd-content">
+            <div id="smileys-content" class="bd-content active">
                 <div>
                     <h3>Smileys & Emotion</h3>
                 </div>
@@ -209,12 +209,13 @@
                 <div class="content-wrapper copy-area">
                 </div>
             </div>
-            <div id="links"><a href="https://fancy-text-generator.com/" target="_blank"
-                    title="Fancy Font Text Generator">Fancy
-                    Font Text Generator</a><a href="https://high-qr-code-generator.com/" target="_blank"
-                    title="High Resolution QR Code Generator">QR Code Generator</a><a href="https://www.arealme.com/"
-                    target="_blank" title="ARealMe Quizzes">Super cool online quizzes</a></div>
         </main>
+
+        <div id="links"><a href="https://fancy-text-generator.com/" target="_blank"
+                title="Fancy Font Text Generator">Fancy
+                Font Text Generator</a><a href="https://high-qr-code-generator.com/" target="_blank"
+                title="High Resolution QR Code Generator">QR Code Generator</a><a href="https://www.arealme.com/"
+                target="_blank" title="ARealMe Quizzes">Super cool online quizzes</a></div>
     </div>
     <script>
         toggleDarkMode();
@@ -288,6 +289,10 @@
                 // Navbar toggle
                 $('.navbar-toggler').click(function () {
                     $(this).toggleClass('collapsed')
+                    // Check if the Sidebar is open
+                    if (!$(this).hasClass('collapsed') && $('.bd-sidebar').hasClass('show')) {
+                        $('.bd-sidebar').removeClass('show')
+                    }
                 })
                 // Sidebar toggle
                 $('.bd-sidebar-toggle').click(function () {
@@ -305,12 +310,29 @@
 
                 // Click Aside Animation
                 $('#bd-patterns-nav .category').on('click', function () {
+                    clearCls($('#bd-patterns-nav .category'), 'active')
+
                     $(this).toggleClass('active')
                     if ($(".bd-sidebar").hasClass('show')) {
                         $(".bd-sidebar").removeClass('show')
                         $('.bd-sidebar-toggle').addClass('collapsed')
                     }
+
+                    // Change the content
+                    var id = $(this).attr('data-href').slice(1);
+                    clearCls($('.bd-content'), 'active')
+                    $(`#${id}`).addClass('active');
+
+                    function clearCls(el, cls) {
+                        el.each(function () {
+                            if ($(this).hasClass(cls)) {
+                                $(this).removeClass(cls)
+                            }
+                        })
+                    }
+
                 })
+
                 $('.collapse-link').on('click', function () {
                     $(this).toggleClass('active')
                 })
@@ -337,8 +359,8 @@
                 var scrollTop = $(this).scrollTop();
 
                 setSideBar()
-                wacth($('.bd-content'), $('#bd-patterns-nav .category'))
-                wacth($('.sub-content'), $('.collapse-link'))
+                // wacth($('.bd-content'), $('#bd-patterns-nav .category'))
+                // wacth($('.sub-content'), $('.collapse-link'))
 
                 // Watch position
                 function wacth(element, target) {
