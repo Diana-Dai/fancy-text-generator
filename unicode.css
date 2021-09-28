@@ -132,12 +132,16 @@ h4 {
 /* Header */
 
 header {
+  min-height: 70px;
   background-color: #181818;
   color: #fff;
 }
+header .container {
+  height: 100%;
+}
 header nav {
-  padding-top: 0.8rem;
-  padding-bottom: 0.8rem;
+  padding: 1rem 0;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -146,14 +150,20 @@ h1 {
   color: #fff;
   font-size: 1.4rem;
 }
+
 /* NavBar */
 #bdNavbar {
   display: flex;
 }
+.icons_wrapper {
+  display: flex;
+  align-items: center;
+}
 
 .navbar-toggler {
-  padding: 0;
+  align-items: center;
   cursor: pointer;
+  padding: 0;
   background-color: transparent;
   border: none;
 }
@@ -417,29 +427,31 @@ h1 {
     flex-wrap: wrap;
   }
 
-  .navbar-toggler.collapsed ~ #bdNavbar ul {
+  #bdNavbar {
     height: 0px;
     opacity: 0;
-  }
-  #bdNavbar {
-    width: 100%;
     overflow: hidden;
-  }
-  #bdNavbar ul {
-    height: 127px;
-    opacity: 1;
-    display: flex;
-    flex-wrap: wrap;
     transition: height 0.2s, opacity 0.1s;
   }
+  #bdNavbar.show {
+    height: 127px;
+    opacity: 1;
+    width: 100%;
+    overflow: hidden;
+    transition: height 0.2s, opacity 0.1s;
+  }
+
+  #bdNavbar ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   #bdNavbar ul li {
     margin-right: auto;
     width: 50%;
   }
-  .darkMode {
-    position: absolute;
-    top: 1.1rem;
-    right: 3.5rem;
+  #bdNavbar ul li:first-child {
+    display: none;
   }
 
   .text-area .input-wrapper {
@@ -532,9 +544,11 @@ h1 {
     width: 20%;
   }
   .bd-sidebar-toggle,
-  .navbar-toggler,
   .myLogo {
     display: inline-block;
+  }
+  .navbar-toggler {
+    display: flex;
   }
   .fixedAside {
     position: fixed;

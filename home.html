@@ -78,17 +78,24 @@
             href="https://fancy-text-generator.com/">
             <img width="35px" height="35px" src="https://fancy-text-generator.com/favicon-76.png"
               alt=" Fancy Font Text Logo"></a></span>
-        <button class="navbar-toggler collapsed" type="button" aria-controls="bdNavbar" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi" fill="#fff" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-              d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
-            </path>
-          </svg>
-        </button>
-        <div id="bdNavbar">
+        <div class="icons_wrapper">
           <a class="darkMode" role="button" title="Use light theme" id="dark-toggler" aria-label="Toggle DarkMode"></a>
+          <button type="button" class="navbar-toggler collapsed" aria-controls="bdNavbar" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi" fill="#fff" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
+              </path>
+            </svg>
+          </button>
+        </div>
+        <div id="bdNavbar">
           <ul>
+
+            <li>
+              <a class="darkMode" role="button" title="Use light theme" id="dark-toggler"
+                aria-label="Toggle DarkMode"></a>
+            </li>
             <li><a class="underline" href="home.html" aria-current="page">Home</a></li>
             <li><a class="underline" href="patterns.html">Patterns</a></li>
             <li><a class="underline" href="iosEmojis.html">Ios Emojis</a></li>
@@ -423,9 +430,22 @@
           $('#input').removeClass('fixedTop');
         }
       })
+
       // Navbar toggle
       $('.navbar-toggler').click(function () {
         $(this).toggleClass('collapsed')
+        if (!$(this).hasClass('collapsed')) {
+          // Check if the Sidebar is open
+          if ($('.bd-sidebar').hasClass('show')) {
+            $('.bd-sidebar').removeClass('show')
+          }
+          // Toggle navigation
+          $('#bdNavbar').addClass('show');
+        }
+        else {
+          $('#bdNavbar').removeClass('show');
+
+        }
       })
 
       !function () {
