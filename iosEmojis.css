@@ -491,7 +491,7 @@ h4 {
     padding: 0 1rem;
   }
   .bd-sidebar-toggler {
-    padding: 0 0.4rem;
+    padding: 0 0.8rem;
     cursor: pointer;
     background-color: transparent;
     color: var(--font-color);
