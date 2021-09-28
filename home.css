@@ -333,6 +333,7 @@ h3 {
     flex-wrap: wrap;
   }
   #bdNavbar {
+    width: 100%;
     height: 0px;
     opacity: 0;
     overflow: hidden;

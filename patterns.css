@@ -487,6 +487,7 @@ h4 {
   }
 
   #bdNavbar {
+    width: 100%;
     height: 0px;
     opacity: 0;
     overflow: hidden;
