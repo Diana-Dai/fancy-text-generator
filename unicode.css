@@ -398,7 +398,7 @@ h1 {
   border-radius: 0.8rem;
   z-index: -1;
 }
-.bd-sidebar-toggle,
+.bd-sidebar-toggler,
 .navbar-toggler,
 .myLogo {
   display: none;
@@ -476,20 +476,20 @@ h1 {
   .bd-layout main {
     padding: 0 1rem;
   }
-  .bd-sidebar-toggle {
+  .bd-sidebar-toggler {
     padding: 0 0.4rem;
     cursor: pointer;
     background-color: transparent;
     color: var(--font-color);
     border: none;
   }
-  .bd-sidebar-toggle.collapsed .bi-collapse {
+  .bd-sidebar-toggler.collapsed .bi-collapse {
     display: none;
   }
-  .bd-sidebar-toggle:not(.collapsed) .bi-collapse {
+  .bd-sidebar-toggler:not(.collapsed) .bi-collapse {
     display: inline-block;
   }
-  .bd-sidebar-toggle:not(.collapsed) .bi-expand {
+  .bd-sidebar-toggler:not(.collapsed) .bi-expand {
     display: none;
   }
   .bd-sidebar {
@@ -543,7 +543,7 @@ h1 {
   .content-wrapper .item-10 {
     width: 20%;
   }
-  .bd-sidebar-toggle,
+  .bd-sidebar-toggler,
   .myLogo {
     display: inline-block;
   }

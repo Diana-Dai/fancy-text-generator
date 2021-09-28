@@ -116,7 +116,7 @@
                     Copy All
                 </button>
             </div>
-            <button class="bd-sidebar-toggle collapsed" type="button" aria-controls="bd-docs-nav" aria-expanded="true"
+            <button class="bd-sidebar-toggler collapsed" type="button" aria-controls="bd-docs-nav" aria-expanded="true"
                 aria-label="Toggle docs navigation">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-expand" fill="currentColor"
                     viewBox="0 0 16 16">
@@ -429,7 +429,7 @@
                     }
                 })
                 // Sidebar toggle
-                $('.bd-sidebar-toggle').click(function () {
+                $('.bd-sidebar-toggler').click(function () {
                     if ($(this).hasClass('collapsed')) {
                         $(this).removeClass('collapsed');
                         $('.bd-sidebar').addClass('show');
@@ -448,7 +448,7 @@
                     $(this).toggleClass('active')
                     if ($(".bd-sidebar").hasClass('show')) {
                         $(".bd-sidebar").removeClass('show')
-                        $('.bd-sidebar-toggle').addClass('collapsed')
+                        $('.bd-sidebar-toggler').addClass('collapsed')
                     }
 
                     // Change the content
