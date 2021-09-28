@@ -136,10 +136,9 @@
         <aside class="bd-sidebar">
             <nav id="bd-patterns-nav" aria-label="Patterns navigation">
                 <ul class="bg-links">
-                    <li><a class="category active" role="button" data-href="#smileys-content">😃 Standard
-                        </a>
+                    <li><a class="category active" role="button" data-href="#smileys-content">😃 Smileys & Emotion </a>
                     </li>
-                    <li><a class="category" role="button" data-href="#people-content">👩‍❤️‍👩 People & Body
+                    <li><a class="category" role="button" data-href="#people-content">👩 People & Body
                         </a>
                     </li>
                     <li><a class="category" role="button" data-href="#animals-content">🐼 Animals & Nature</a>
@@ -322,18 +321,29 @@
 
                 // Click Aside Animation
                 $('#bd-patterns-nav .category').on('click', function () {
-                    clearCls($('#bd-patterns-nav .category'), 'active')
+                    var targetid = $(this).attr('data-href').slice(1);
 
+                    // Get the content 
+                    var getContent = function (category, node) {
+                        var filteredCategory = category.replace(/\n(\n)*( )*(\n)*\n/g, "\n")
+                        getUnicode(filteredCategory.trim().slice(3), node);
+                    }
+                    getContent($(this).text(), $(`#${targetid} .copy-area`))
+
+
+                    //Change the sidebar tags  
+                    clearCls($('#bd-patterns-nav .category'), 'active')
                     $(this).toggleClass('active')
+                    // Toggle sidebar
                     if ($(".bd-sidebar").hasClass('show')) {
                         $(".bd-sidebar").removeClass('show')
                         $('.bd-sidebar-toggler').addClass('collapsed')
                     }
 
-                    // Change the content
-                    var id = $(this).attr('data-href').slice(1);
+
+                    // Change the tab
                     clearCls($('.bd-content'), 'active')
-                    $(`#${id}`).addClass('active');
+                    $(`#${targetid}`).addClass('active');
 
                     function clearCls(el, cls) {
                         el.each(function () {
@@ -342,7 +352,6 @@
                             }
                         })
                     }
-
                 })
 
                 $('.collapse-link').on('click', function () {
@@ -357,15 +366,32 @@
 
             }
 
-            $.getJSON('emoji.json', function (data) {
-                $.each(data, function (infoIndex, info) {
-                    var category = info['category'].split("&")[0].toLowerCase().trim(),
-                        node = $(`#${category}-content .copy-area`),
-                        emoji = info['emoji'];
-                    setTexts(emoji, node);
-                })
+            var getUnicode = (function () {
+                var cache = {};
+                // Generate the unciodes
+                return function (category, node) {
+                    // Check if there's unicode caches already
+                    if (!cache[category]) {
+                        $.getJSON('emoji.json', function (data) {
+                            $.each(data, function (infoIndex, info) {
+                                if (category === info['category']) {
+                                    if (cache[category]) {
+                                        cache[category].push(info['emoji'])
+                                    } else {
+                                        cache[category] = [info['emoji']];
+                                    }
+                                }
+                            })
+                            setTexts(cache[category], node);
+                        })
+                    }
+                }
+                setTexts(cache[category], node);
 
-            })
+            })()
+
+            // Get the first category content
+            getUnicode('Smileys & Emotion', $('#smileys-content .copy-area'));
 
             $(window).scroll(function () {
                 var scrollTop = $(this).scrollTop();
@@ -417,9 +443,11 @@
 
             // v is the emoji, element is the parentNode
             function setTexts(v, element) {
-                var l = $(`<p >${v}</p>`),
-                    el = $('<div class="item-10 flex-item copy-wrapper"><span class="copy">copied!</span></div>').append(l);
-                $(element).append(el)
+                for (var i = 0; i < v.length; i++) {
+                    var l = $(`<p>${v[i]}</;>`),
+                        el = $('<div class="item-10 flex-item copy-wrapper"><span class="copy">Copied!</span></div>').append(l);
+                    $(element).append(el)
+                }
             }
 
             function u(t, e) {

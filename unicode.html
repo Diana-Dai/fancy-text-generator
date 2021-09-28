@@ -280,7 +280,7 @@
                 <div class="content-wrapper copy-area">
                 </div>
             </div>
-            <div id="gesh-content" class="bd-content">
+            <div id="gosh-content" class="bd-content">
                 <h3>Geometric Shapes</h3>
                 <div class="content-wrapper copy-area">
                 </div>
@@ -342,7 +342,6 @@
                 title="High Resolution QR Code Generator">QR Code Generator</a><a href="https://www.arealme.com/"
                 target="_blank" title="ARealMe Quizzes">Super cool online quizzes</a></div>
     </div>
-
     <script>
         toggleDarkMode();
         function toggleDarkMode() {
@@ -428,7 +427,7 @@
 
                     }
                 })
-                // Sidebar toggle
+                // Sidebar toggler
                 $('.bd-sidebar-toggler').click(function () {
                     if ($(this).hasClass('collapsed')) {
                         $(this).removeClass('collapsed');
@@ -443,18 +442,29 @@
 
                 // Click Aside Animation
                 $('#bd-patterns-nav .category').on('click', function () {
-                    clearCls($('#bd-patterns-nav .category'), 'active')
+                    var targetid = $(this).attr('data-href').slice(1);
 
+                    // Get the content 
+                    var getContent = function (category, node) {
+                        var filteredCategory = category.replace(/\n(\n)*( )*(\n)*\n/g, "\n")
+                        getUnicode(filteredCategory.trim(), node);
+                    }
+                    getContent($(this).text(), $(`#${targetid} .copy-area`))
+
+
+                    //Change the sidebar tags  
+                    clearCls($('#bd-patterns-nav .category'), 'active')
                     $(this).toggleClass('active')
+                    // Toggle sidebar
                     if ($(".bd-sidebar").hasClass('show')) {
                         $(".bd-sidebar").removeClass('show')
                         $('.bd-sidebar-toggler').addClass('collapsed')
                     }
 
-                    // Change the content
-                    var id = $(this).attr('data-href').slice(1);
+
+                    // Change the tab
                     clearCls($('.bd-content'), 'active')
-                    $(`#${id}`).addClass('active');
+                    $(`#${targetid}`).addClass('active');
 
                     function clearCls(el, cls) {
                         el.each(function () {
@@ -463,9 +473,7 @@
                             }
                         })
                     }
-
                 })
-
 
                 $('.collapse-link').on('click', function () {
                     $(this).toggleClass('active')
@@ -475,19 +483,48 @@
                     var originalval = $("#mytext").val();
                     $("#mytext").val(originalval + val);
                 }
-
-
             }
 
-            $.getJSON('emoji.json', function (data) {
-                $.each(data, function (infoIndex, info) {
-                    var category = info['category'].split("&")[0].toLowerCase().trim(),
-                        node = $(`#${category}-content .copy-area`),
-                        emoji = info['emoji'];
-                    setTexts(emoji, node);
-                })
+            var getUnicode = (function () {
+                var cache = {};
+                // Generate the unciodes
+                return function (category, node) {
+                    // Check if there's unicode caches already
+                    if (!cache[category]) {
+                        $.getJSON('unicode.json', function (data) {
+                            $.each(data, function (infoIndex, info) {
+                                if (category === info['category']) {
+                                    var unicodeList = getUniList(info);
+                                    if (cache[category]) {
+                                        cache[category].push(...unicodeList)
+                                    } else {
+                                        cache[category] = unicodeList;
+                                    }
+                                }
+                                function getUniList(info) {
+                                    var j = info['start'],
+                                        e = info['end'],
+                                        l = [];
+                                    while (j <= info['end']) {
+                                        if (j) {
+                                            var ch = `&#${j};`
+                                            l.push(ch);
+                                        }
+                                        j++;
+                                    }
+                                    return l
+                                }
+                            })
+                            setTexts(cache[category], node);
+                        })
+                    }
+                }
+                setTexts(cache[category], node);
 
-            })
+            })()
+
+            // Get the first category content
+            getUnicode('Standard', $('#st-content .copy-area'));
 
             $(window).scroll(function () {
                 var scrollTop = $(this).scrollTop();
@@ -524,36 +561,8 @@
                     $(element).append(el)
                 }
             }
-            getUnicode()
-            function getUnicode() {
-                // Generate the unciodes
-                $.getJSON('unicode.json', function (data) {
-                    $.each(data, function (infoIndex, info) {
-                        var category = info['category'].split(" ");
-                        var idStr = '';
-                        $.each(category, function (dataIndex, data) {
-                            idStr += data.toLowerCase().slice(0, 2);
-                        })
 
-                        setTexts(getUniList(info), $(`#${idStr}-content .copy-area`));
-                        function getUniList(info) {
-                            var j = info['start'],
-                                e = info['end'],
-                                l = [];
-                            while (j <= info['end']) {
-                                if (j) {
-                                    var ch = `&#${j};`
-                                    l.push(ch);
-                                }
 
-                                j++;
-                            }
-                            return l
-                        }
-                    })
-
-                })
-            }
         }
 
     </script>

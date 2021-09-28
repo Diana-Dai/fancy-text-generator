@@ -6,7 +6,7 @@
 },
 
 {
-    "category":"General Punctuation",
+    "category":"Punctuation",
     "start":8208,
     "end":8231
  },
@@ -16,7 +16,7 @@
     "end":8286
  },
  {
-     "category":"Superscripts and Subscripts",
+     "category":"Superscripts/Subscripts",
      "start":8304,
      "end":8348
  },
@@ -60,10 +60,6 @@
  }
  ,{
      "category":"Math Symbols",
-     "start":10176,
-     "end":10176 }
- ,{
-     "category":"Math Symbols",
      "start":10624,
      "end":10751 }
  ,
@@ -72,7 +68,7 @@
      "start":10752,
      "end":11007 },
  {
-     "category":"Miscellaneous Technical",
+     "category":"Misc. Technical",
      "start":8960,
      "end":9215 },
  {
@@ -97,14 +93,10 @@
      "end":9727 },
  {
      "category":"Geometric Shapes",
-     "start":9632,
-     "end":9727 },
- {
-     "category":"Geometric Shapes",
      "start":128896,
      "end":129023 },
  {
-     "category":"Miscellaneous Symbols",
+     "category":"Misc. Symbols",
      "start":9728,
      "end":9983 },
  {
@@ -116,7 +108,7 @@
      "start":10240,
      "end":10495 },
  {
-     "category":"Misc Symbols and Arrows",
+     "category":"Symbols and Arrows",
      "start":11008,
      "end":11263 },
  {

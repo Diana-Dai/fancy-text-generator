@@ -360,12 +360,39 @@
 
                 // Click Aside Animation
                 $('#bd-patterns-nav .category').on('click', function () {
+                    var targetid = $(this).attr('data-href').slice(1);
+
+                    // Get the content 
+                    var getContent = function (category, node) {
+                        var filteredCategory = category.replace(/\n(\n)*( )*(\n)*\n/g, "\n")
+                        getUnicode(filteredCategory.trim(), node);
+                    }
+                    getContent($(this).text(), $(`#${targetid} .copy-area`))
+
+
+                    //Change the sidebar tags  
+                    clearCls($('#bd-patterns-nav .category'), 'active')
                     $(this).toggleClass('active')
+                    // Toggle sidebar
                     if ($(".bd-sidebar").hasClass('show')) {
                         $(".bd-sidebar").removeClass('show')
                         $('.bd-sidebar-toggler').addClass('collapsed')
                     }
+
+
+                    // Change the tab
+                    clearCls($('.bd-content'), 'active')
+                    $(`#${targetid}`).addClass('active');
+
+                    function clearCls(el, cls) {
+                        el.each(function () {
+                            if ($(this).hasClass(cls)) {
+                                $(this).removeClass(cls)
+                            }
+                        })
+                    }
                 })
+
                 $('.collapse-link').on('click', function () {
                     $(this).toggleClass('active')
                 })
