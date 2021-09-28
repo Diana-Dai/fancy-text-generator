@@ -498,10 +498,10 @@ h4 {
     color: var(--font-color);
     border: none;
   }
-  .bd-sidebar-toggler .collapsed .bi-collapse {
+  .bd-sidebar-toggler.collapsed .bi-collapse {
     display: none;
   }
-  .bd-sidebar-toggler :not(.collapsed) .bi-collapse {
+  .bd-sidebar-toggler:not(.collapsed) .bi-collapse {
     display: inline-block;
   }
   .bd-sidebar-toggler :not(.collapsed) .bi-expand {
