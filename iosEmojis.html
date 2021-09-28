@@ -217,65 +217,118 @@
             target="_blank" title="ARealMe Quizzes">Super cool online quizzes</a></div>
 
     <script>
-        toggleDarkMode()
+        function aloadJS(r, e) {
+            var n = document; window; !function () { var t = n.createElement("script"); e = e || function () { }, t.onload = e, t.src = r; try { n.head.appendChild(t) } catch (r) { document.documentElement.appendChild(t) } }()
+        }
+        aloadJS('#{jquery_path}', _m);
 
-        $(document).ready(function () {
-            // Copy text function
-            $(".copy-area").each(function () {
-                $(this).on("click", "p", function () {
-                    ((t) => {
-                        copyText(t)
-                        changeInputVal(t)
-                    })($(this).text());
+        function _m() {
+            eventsTrigger();
+            toggleDarkMode();
+            function toggleDarkMode() {
+                // darkMode
+                $('#dark-toggler').click(function () {
+                    $(this).toggleClass('active');
+                    $(this).attr('title', "Use dark mode");
+                    var cl = $("body").toggleClass("dark");
+                    if ($("body").hasClass('dark')) {
+                        // Whenever the user explicitly chooses dark mode
+                        localStorage.theme = 'dark';
+                    } else {
+                        //     // Whenever the user explicitly chooses light mode
+                        localStorage.theme = 'light';
+                    }
+                })
+                changeStorageData();
+                function changeStorageData() {
+                    if (
+                        localStorage.theme === 'dark'
+                        || (!('theme' in localStorage)
+                            && window.matchMedia('(prefers-color-scheme: dark)').matches)
+                    ) {
+                        $("body").addClass('dark');
+                        $('#dark-toggler').addClass('active');
+                    } else {
+                        $("body").removeClass('dark');
+                    }
+                };
+            }
 
-                    var t = $(this);
-                    // finish copy
-                    var span = t.parent().find('span');
-                    span.show();
+            function eventsTrigger() {
+                // Copy text function
+                $(".copy-area").each(function () {
+                    $(this).on("click", "p", function () {
+                        ((t) => {
+                            copyText(t)
+                            changeInputVal(t)
+                        })($(this).text());
+
+                        var t = $(this);
+                        // finish copy
+                        var span = t.parent().find('span');
+                        span.show();
+                        setTimeout(() => {
+                            span.hide();
+                        }, 1000)
+                    })
+                })
+
+                // Copy All
+                $(".btn-copy").on('click', function () {
+                    copyText($("#mytext").val())
+
+                    $(this).text("Copied!")
                     setTimeout(() => {
-                        span.hide();
+                        $(this).text("Copy All")
                     }, 1000)
                 })
-            })
 
-            // Copy All
-            $(".btn-copy").on('click', function () {
-                copyText($("#mytext").val())
+                // Navbar toggle
+                $('.navbar-toggler').click(function () {
+                    $(this).toggleClass('collapsed')
+                })
+                // Sidebar toggle
+                $('.bd-sidebar-toggle').click(function () {
+                    if ($(this).hasClass('collapsed')) {
+                        $(this).removeClass('collapsed');
+                        $('.bd-sidebar').addClass('show');
+                    } else {
+                        $(this).addClass('collapsed');
+                        $('.bd-sidebar').removeClass('show');
 
-                $(this).text("Copied!")
-                setTimeout(() => {
-                    $(this).text("Copy All")
-                }, 1000)
-            })
+                    }
 
-            // Navbar toggle
-            $('.navbar-toggler').click(function () {
-                $(this).toggleClass('collapsed')
-            })
+                })
 
-            // Sidebar toggle
-            $('.bd-sidebar-toggle').click(function () {
-                if ($(this).hasClass('collapsed')) {
-                    $(this).removeClass('collapsed');
-                    $('.bd-sidebar').addClass('show');
-                } else {
-                    $(this).addClass('collapsed');
-                    $('.bd-sidebar').removeClass('show');
 
+                // Click Aside Animation
+                $('#bd-patterns-nav .category').on('click', function () {
+                    $(this).toggleClass('active')
+                    if ($(".bd-sidebar").hasClass('show')) {
+                        $(".bd-sidebar").removeClass('show')
+                        $('.bd-sidebar-toggle').addClass('collapsed')
+                    }
+                })
+                $('.collapse-link').on('click', function () {
+                    $(this).toggleClass('active')
+                })
+
+                function changeInputVal(val) {
+                    var originalval = $("#mytext").val();
+                    $("#mytext").val(originalval + val);
                 }
 
-            })
 
-            // Click Aside Animation
-            $('#bd-patterns-nav .category').on('click', function () {
-                $(this).toggleClass('active')
-                if ($(".bd-sidebar").hasClass('show')) {
-                    $(".bd-sidebar").removeClass('show')
-                    $('.bd-sidebar-toggle').addClass('collapsed')
-                }
-            })
-            $('.collapse-link').on('click', function () {
-                $(this).toggleClass('active')
+            }
+
+            $.getJSON('emoji.json', function (data) {
+                $.each(data, function (infoIndex, info) {
+                    var category = info['category'].split("&")[0].toLowerCase().trim(),
+                        node = $(`#${category}-content .copy-area`),
+                        emoji = info['emoji'];
+                    setTexts(emoji, node);
+                })
+
             })
 
             $(window).scroll(function () {
@@ -314,15 +367,7 @@
                         $(".text-area").removeClass('fixedText');
                     }
                 }
-
             })
-
-            function click(element) {
-                element.on('click', function () {
-                    $(this).toggleClass('active')
-                })
-            }
-
 
             function copyText(t) {
                 const e = document.createElement("textarea");
@@ -334,59 +379,39 @@
 
             }
 
-            function changeInputVal(val) {
-                var originalval = $("#mytext").val();
-                $("#mytext").val(originalval + val);
+            // v is the emoji, element is the parentNode
+            function setTexts(v, element) {
+                var l = $(`<p >${v}</p>`),
+                    el = $('<div class="item-10 flex-item copy-wrapper"><span class="copy">copied!</span></div>').append(l);
+                $(element).append(el)
             }
 
-        })
-
-
-        // // v is the emoji, element is the parentNode
-        function setTexts(v, element) {
-            var l = $(`<p >${v}</p>`),
-                el = $('<div class="item-10 flex-item copy-wrapper"><span class="copy">copied!</span></div>').append(l);
-            $(element).append(el)
-        }
-
-        $.getJSON('emoji.json', function (data) {
-            $.each(data, function (infoIndex, info) {
-                var category = info['category'].split("&")[0].toLowerCase().trim(),
-                    node = $(`#${category}-content .copy-area`),
-                    emoji = info['emoji'];
-                setTexts(emoji, node);
-            })
-
-        })
-
-
-        function toggleDarkMode() {
-            // darkMode
-            $('#dark-toggler').click(function () {
-                $(this).toggleClass('active');
-                $(this).attr('title', "Use dark mode");
-                var cl = $("body").toggleClass("dark");
-                if ($("body").hasClass('dark')) {
-                    // Whenever the user explicitly chooses dark mode
-                    localStorage.theme = 'dark';
+            function u(t, e) {
+                if (!t) return "";
+                var test = Number(t);
+                if (isNaN(test)) {
+                    var a = Array.from(
+                        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    );
                 } else {
-                    //     // Whenever the user explicitly chooses light mode
-                    localStorage.theme = 'light';
+                    var a = Array.from(
+                        "0123456789"
+                    );
                 }
-            })
-            changeStorageData();
-            function changeStorageData() {
-                if (
-                    localStorage.theme === 'dark'
-                    || (!('theme' in localStorage)
-                        && window.matchMedia('(prefers-color-scheme: dark)').matches)
+                for (
+                    var n = Array.from(e),
+                    r = t,
+                    i = 0;
+                    i < a.length;
+                    i++
                 ) {
-                    $("body").addClass('dark');
-                    $('#dark-toggler').addClass('active');
-                } else {
-                    $("body").removeClass('dark');
+                    var o = a[i],
+                        s = n[i];
+                    r = r.split(o).join(s);
                 }
-            };
+                return r;
+            }
+
         }
 
     </script>

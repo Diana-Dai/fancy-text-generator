@@ -60,7 +60,7 @@ h4 {
   max-width: 1280px;
 }
 #links {
-  margin: 2rem auto 1.5rem;
+  margin: 2rem 0 1.5rem 140px;
   display: inline-block;
   text-align: center;
   width: 100%;
@@ -510,6 +510,9 @@ h1 {
   #links {
     display: flex;
     flex-direction: column;
+  }
+  .content-wrapper .item-10 {
+    width: 20%;
   }
 }
 
