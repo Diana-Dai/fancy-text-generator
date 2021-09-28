@@ -503,7 +503,7 @@ h4 {
   .bd-sidebar-toggler:not(.collapsed) .bi-collapse {
     display: inline-block;
   }
-  .bd-sidebar-toggler :not(.collapsed) .bi-expand {
+  .bd-sidebar-toggler:not(.collapsed) .bi-expand {
     display: none;
   }
   .bd-sidebar {

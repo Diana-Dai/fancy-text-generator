@@ -211,13 +211,13 @@ h3 {
 #out,
 #input {
   padding: 0.3rem 0.4rem;
-  background-color: var(--input-bg-color);
+  background-color: var(--background-color);
 }
 
 #out #demo,
 #input textarea,
 .copy-area {
-  background-color: var(--input-bg-color);
+  background-color: var(--background-color);
   margin-top: 0.5rem;
   width: 100%;
   font-size: 1.2rem;
