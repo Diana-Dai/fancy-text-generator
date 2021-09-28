@@ -416,7 +416,7 @@ h4 {
   z-index: -1;
 }
 .bd-sidebar-toggle,
-.navbar-toggler,
+.icons_wrapper,
 .myLogo {
   display: none;
 }
@@ -565,7 +565,7 @@ h4 {
   .myLogo {
     display: inline-block;
   }
-  .navbar-toggler {
+  .icons_wrapper {
     display: flex;
   }
   .fixedAside {

@@ -399,7 +399,7 @@ h1 {
   z-index: -1;
 }
 .bd-sidebar-toggler,
-.navbar-toggler,
+.icons_wrapper,
 .myLogo {
   display: none;
 }
@@ -547,7 +547,7 @@ h1 {
   .myLogo {
     display: inline-block;
   }
-  .navbar-toggler {
+  .icons_wrapper {
     display: flex;
   }
   .fixedAside {
