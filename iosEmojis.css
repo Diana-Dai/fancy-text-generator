@@ -1,7 +1,4 @@
-/* ***S-APPLY TO ALL PAGES */
 * {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 a {
@@ -95,8 +92,6 @@ h4 {
   transform: translateY(-50%);
   transition: 0.2s linear;
 }
-
-/* ***E-APPLY TO ALL PAGES */
 
 /* Dark Mode  */
 
