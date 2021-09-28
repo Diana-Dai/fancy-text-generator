@@ -194,7 +194,7 @@ h1 {
   overflow: scroll;
   position: absolute;
   top: 0;
-  height: 100vh;
+  height: 80;
   white-space: nowrap;
 }
 
