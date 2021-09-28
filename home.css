@@ -279,10 +279,15 @@ h3 {
 .working {
   background-color: #fff;
 }
+.bd-sidebar-toggle,
+.navbar-toggler,
+.myLogo {
+  display: none;
+}
 
 /* Mobile */
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
   .wrap {
     width: 95%;
     margin: 0 auto;
@@ -315,16 +320,13 @@ h3 {
   header nav {
     flex-wrap: wrap;
   }
-  .navbar-toggler {
-    position: absolute;
-    right: 1rem;
-    top: 0.9rem;
-  }
+
   .navbar-toggler.collapsed ~ #bdNavbar ul {
     height: 0px;
     opacity: 0;
   }
   #bdNavbar {
+    width: 100%;
     overflow: hidden;
   }
   #bdNavbar ul {
@@ -350,13 +352,9 @@ h3 {
     display: flex;
     flex-direction: column;
   }
-}
-
-@media (min-width: 760px) {
-  .navbar-toggler {
-    display: none;
-  }
+  .bd-sidebar-toggle,
+  .navbar-toggler,
   .myLogo {
-    display: none;
+    display: inline-block;
   }
 }
