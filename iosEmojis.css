@@ -291,7 +291,6 @@ h4 {
 }
 .copy-wrapper:hover p {
   background-color: var(--bg-hover-color);
-  transform: scale(1.2);
 }
 .copy-wrapper:hover span {
   opacity: 1;
