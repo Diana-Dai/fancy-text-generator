@@ -50,6 +50,10 @@ h3,
 h4 {
   margin: 0;
 }
+img,
+svg {
+  vertical-align: middle;
+}
 .container {
   padding: 0 1rem;
 }
@@ -441,6 +445,7 @@ h1 {
   }
 
   #bdNavbar ul {
+    margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
   }

@@ -53,7 +53,10 @@ h3,
 h4 {
   margin: 0;
 }
-
+img,
+svg {
+  vertical-align: middle;
+}
 #links {
   margin: 2rem auto 1.5rem;
   display: inline-block;
@@ -343,6 +346,7 @@ h3 {
     transition: height 0.2s, opacity 0.1s;
   }
   #bdNavbar ul {
+    margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
   }
