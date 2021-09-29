@@ -123,12 +123,9 @@ header {
   min-height: 70px;
   background-color: #181818;
 }
-header .container {
-  height: 100%;
-}
+
 header nav {
   padding: 1rem 0;
-  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
