@@ -360,15 +360,7 @@
 
                 // Click Aside Animation
                 $('#bd-patterns-nav .category').on('click', function () {
-                    var targetid = $(this).attr('data-href').slice(1);
-
-                    // Get the content 
-                    var getContent = function (category, node) {
-                        var filteredCategory = category.replace(/\n(\n)*( )*(\n)*\n/g, "\n")
-                        getUnicode(filteredCategory.trim(), node);
-                    }
-                    getContent($(this).text(), $(`#${targetid} .copy-area`))
-
+                    var targetid = $(this).attr('href').slice(1);
 
                     //Change the sidebar tags  
                     clearCls($('#bd-patterns-nav .category'), 'active')
