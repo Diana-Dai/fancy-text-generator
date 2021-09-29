@@ -438,7 +438,6 @@ block head
     setTexts(i, '#quotes-content .copy-area')
     $(window).scroll(function () {
     var scrollTop = $(this).scrollTop();
-    setSideBar()
     wacth($('.bd-content'), $('#bd-patterns-nav .category'))
     wacth($('.sub-content'), $('.collapse-link'))
     // Watch position
@@ -457,6 +456,7 @@ block head
     }
     ;
     })
+    }
     })
     function copyText(t) {
     const e = document.createElement("textarea");

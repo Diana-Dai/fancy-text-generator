@@ -334,14 +334,16 @@ h4 {
     background-color: #f8f9fa;
     border-bottom: 1px solid var(--border-color);
   }
-  .dark .bd-sidebar {
-    background-color: #181818;
-  }
   .bd-sidebar.show {
+    height: calc(100vh - 10rem);
     opacity: 1;
     z-index: 1;
     transition: height 0.2s, opacity 0.1s;
   }
+  .dark .bd-sidebar {
+    background-color: #181818;
+  }
+
   .bd-sidebar.show ~ .bd-main {
     min-height: 250px;
     height: 0;
