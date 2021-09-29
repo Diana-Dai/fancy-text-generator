@@ -343,6 +343,7 @@
     </div>
     <script>
 
+
         function aloadJS(r, e) {
             var n = document; window; !function () { var t = n.createElement("script"); e = e || function () { }, t.onload = e, t.src = r; try { n.head.appendChild(t) } catch (r) { document.documentElement.appendChild(t) } }()
         }
@@ -350,7 +351,9 @@
 
         function _m() {
             toggleDarkMode();
+
             eventsTrigger();
+
             function eventsTrigger() {
                 // Copy text function
                 $(".copy-area").each(function () {
@@ -559,6 +562,7 @@
                     }
                 };
             }
+
         }
 
     </script>
