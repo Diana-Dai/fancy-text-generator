@@ -11,21 +11,28 @@
 }
 
 .bd-layout {
+  display: flex;
   position: relative;
   padding: 0 1rem;
   margin-top: 2rem;
 }
 
 .bd-main {
-  margin-left: 280px;
+  flex: 1 1 0;
+  min-height: 100vh;
+  margin-left: 30px;
 }
 /* Aside */
+
 .bd-sidebar {
   width: 250px;
-  overflow: scroll;
-  position: absolute;
-  top: 0;
   white-space: nowrap;
+}
+.bd-sidebar nav {
+  position: sticky;
+  top: 5.5rem;
+  height: calc(100vh - 10rem);
+  overflow-y: auto;
 }
 
 .bd-sidebar .bg-links {
@@ -284,11 +291,6 @@ h4 {
 .myLogo {
   display: none;
 }
-.fixedAside {
-  position: fixed;
-  bottom: 0;
-  top: 5.5rem;
-}
 
 /* Mobile */
 @media (max-width: 768px) {
@@ -384,7 +386,6 @@ h4 {
     background-color: #181818;
   }
   .bd-sidebar.show {
-    height: calc(100vh - 250px);
     opacity: 1;
     z-index: 1;
     transition: height 0.2s, opacity 0.1s;
@@ -427,8 +428,5 @@ h4 {
   }
   .icons_wrapper {
     display: flex;
-  }
-  .fixedAside {
-    position: fixed;
   }
 }

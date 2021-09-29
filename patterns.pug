@@ -457,16 +457,6 @@ block head
     }
     ;
     })
-    }
-    // Sticky SlideBar & Test Area
-    function setSideBar() {
-    var layoutH = $('header').height();
-    if (scrollTop >= layoutH) {
-    $("aside").addClass('fixedAside');
-    } else {
-    $('aside').removeClass('fixedAside');
-    }
-    }
     })
     function copyText(t) {
     const e = document.createElement("textarea");

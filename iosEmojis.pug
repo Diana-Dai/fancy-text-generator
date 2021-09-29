@@ -282,42 +282,6 @@ block head
       // Get the first category content
       getUnicode('Smileys & Emotion', $('#smileys-content .copy-area'));
 
-      $(window).scroll(function () {
-        var scrollTop = $(this).scrollTop();
-
-        setSideBar()
-        // wacth($('.bd-content'), $('#bd-patterns-nav .category'))
-        // wacth($('.sub-content'), $('.collapse-link'))
-
-        // Watch position
-        function wacth(element, target) {
-          element.each(function () {
-            if ($(this).offset().top <= scrollTop + 100) {
-              var id = $(this)[0].id;
-              target.each(function () {
-                if ($(this).attr('href') === "#" + id) {
-                  if (!$(this).hasClass('active')) {
-                    target.removeClass('active');
-                    $(this).addClass('active')
-                  }
-                }
-              })
-            }
-            ;
-          })
-        }
-
-        // Sticky SlideBar & Test Area
-        function setSideBar() {
-          var layoutH = $('header').height();
-          if (scrollTop >= layoutH) {
-            $("aside").addClass('fixedAside');
-          } else {
-            $('aside').removeClass('fixedAside');
-          }
-        }
-      })
-
       function copyText(t) {
         const e = document.createElement("textarea");
         (e.value = t),

@@ -392,23 +392,6 @@ block head
         // Get the first category content
         getUnicode('Standard', $('#st-content .copy-area'));
 
-        $(window).scroll(function () {
-          var scrollTop = $(this).scrollTop();
-
-          setSideBar()
-
-          // Sticky SlideBar & Test Area
-          function setSideBar() {
-            var layoutH = $('header').height();
-            if (scrollTop >= layoutH) {
-              $("aside").addClass('fixedAside');
-            } else {
-              $('aside').removeClass('fixedAside');
-            }
-          }
-        }
-        )
-
         function copyText(t) {
           const e = document.createElement("textarea");
           (e.value = t),
