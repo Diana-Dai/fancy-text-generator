@@ -25,7 +25,9 @@ h2 {
 }
 
 #input {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 h2 {
@@ -151,10 +153,7 @@ h3 {
   .copy-area {
     font-size: 1rem;
   }
-  .fixedTop {
-    left: 2%;
-    right: 2%;
-  }
+
   header nav {
     flex-wrap: wrap;
   }

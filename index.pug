@@ -359,17 +359,6 @@ block head
         })
 
 
-        // Sticky TextArea
-        $(window).scroll(function () {
-          var _scrolltop = $('#out').offset().top;
-          var scrollTop = $(this).scrollTop();
-          if (scrollTop >= _scrolltop) {
-            $("#input").addClass('fixedTop');
-          } else {
-            $('#input').removeClass('fixedTop');
-          }
-        })
-
         // Navbar toggle
         $('.navbar-toggler').click(function () {
           $(this).toggleClass('collapsed')

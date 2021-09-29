@@ -402,13 +402,12 @@ block head
             var layoutH = $('header').height();
             if (scrollTop >= layoutH) {
               $("aside").addClass('fixedAside');
-              $(".text-area").addClass('fixedText');
             } else {
               $('aside').removeClass('fixedAside');
-              $(".text-area").removeClass('fixedText');
             }
           }
-        })
+        }
+        )
 
         function copyText(t) {
           const e = document.createElement("textarea");

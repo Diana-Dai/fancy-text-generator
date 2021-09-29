@@ -127,6 +127,9 @@
 .text-area {
   height: 56px;
   width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 .text-area .input-container {
   padding: 0.5rem 0;
