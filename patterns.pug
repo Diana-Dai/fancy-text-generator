@@ -234,6 +234,13 @@ block head
     $('.bd-sidebar').removeClass('show');
     }
     })
+    function clearCls(el, cls) {
+    el.each(function () {
+    if ($(this).hasClass(cls)) {
+    $(this).removeClass(cls)
+    }
+    })
+    }
     // Click Aside Animation
     $('#bd-patterns-nav .category').on('click', function () {
     var targetid = $(this).attr('href').slice(1);
@@ -248,16 +255,16 @@ block head
     // Change the tab
     clearCls($('.bd-content'), 'active')
     $(`#${targetid}`).addClass('active');
-    function clearCls(el, cls) {
-    el.each(function () {
-    if ($(this).hasClass(cls)) {
-    $(this).removeClass(cls)
-    }
-    })
-    }
+
     })
     $('.collapse-link').on('click', function () {
+    clearCls($('.collapse-link'), 'active')
     $(this).toggleClass('active')
+    // Toggle sidebar
+    if ($(".bd-sidebar").hasClass('show')) {
+    $(".bd-sidebar").removeClass('show')
+    $('.bd-sidebar-toggler').addClass('collapsed')
+    }
     })
     dateFunc();
     function dateFunc() {
