@@ -5,6 +5,13 @@
 .copy-wrapper {
   position: relative;
 }
+.copy-wrapper:hover {
+  color: var(--font-hover-color);
+}
+.copy-wrapper:hover p {
+  background-color: var(--bg-hover-color);
+  border-color: var(--font-hover-color);
+}
 .copy {
   display: none;
   left: 50%;
@@ -120,7 +127,7 @@ h4 {
 .copy-area {
   cursor: pointer;
 }
-.content-wrapper .flex-item p {
+.copy-wrapper p {
   width: 100%;
   min-height: 36px;
   padding: 0.3rem 0;

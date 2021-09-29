@@ -152,12 +152,13 @@ h4 {
 }
 .copy-wrapper:hover p {
   background-color: var(--bg-hover-color);
+  border-color: var(--font-hover-color);
 }
 .copy-wrapper:hover span {
   opacity: 1;
 }
 
-.content-wrapper .flex-item p {
+.copy-wrapper p {
   width: 100%;
   min-height: 36px;
   padding: 0.3rem 0;

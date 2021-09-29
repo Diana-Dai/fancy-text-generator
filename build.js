@@ -39,6 +39,7 @@ minify(pug_html2, {
 }).then((result) => {
   fs.writeFileSync("release/patterns.html", result, "utf8");
 });
+
 minify(pug_html3, {
   removeAttributeQuotes: false,
   removeComments: true,
@@ -47,6 +48,7 @@ minify(pug_html3, {
 }).then((result) => {
   fs.writeFileSync("release/iosEmojis.html", result, "utf8");
 });
+
 minify(pug_html4, {
   removeAttributeQuotes: false,
   removeComments: true,
