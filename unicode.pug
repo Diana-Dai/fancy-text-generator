@@ -1,0 +1,465 @@
+html
+  
+block head
+  title #{title}
+  meta(name='description', content='Fancy Text Font Generator. Get your personal stylish Instagram names and stories! Free and no registration required.')
+  link(rel='shortcut icon', href='/favicon.ico')
+  meta(name='msapplication-TileColor', content='#FFFFFF')
+  meta(name='msapplication-TileImage', content='/favicon-144.png')
+  link(rel='canonical', href='https://fancy-text-generator.com')
+  meta(name='msapplication-config', content='/browserconfig.xml')
+  meta(property='og:title', content='Fancy Text Font Generator')
+  meta(property='og:type', content='website')
+  meta(property='og:url', content='https://fancy-text-generator.com')
+  meta(property='og:image', content='https://fancy-text-generator.com/v1.png')
+  meta(property='og:description', content='Fancy Text Font Generator. Get your personal stylish Instagram names and stories! Free and no registration required.')
+  script(type='application/ld+json').
+    {
+      "@context": "https://schema.org/",
+      "@type": "WebSite",
+      "name": "Fancy Text Font Generator",
+      "image": "https://fancy-text-generator/v1.png",
+      "description": "Fancy Text Font Generator. Get your personal stylish Instagram names and stories! Free and no registration required.",
+      "keywords": "Fancy Text, Fancy Font, Fancy Text Generator, Fancy Text Copy and Paste",
+      "genre":"Utility",
+      "copyrightYear": "2019",
+   ˜   "url":"https://fancy-text-generator.com",
+      "author": {
+        "@type":"WebSite",
+        "name":"fancy-text-generator.com"
+      },
+      "publisher": {
+        "@type":"Organization",
+        "name":"fancy-text-generator.com",
+        "logo":"https://fancy-text-generator.com/v1.png"
+      }
+    }
+  style
+    include assets/css/common.css
+    include assets/css/unicode.css
+
+  body
+    - var jquery_path = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js';
+    header
+      .header_container.container
+        nav(aria-label='Main')
+          h1.title
+            a(title='Fancy Font Text Generator' href='https://fancy-text-generator.com/')
+              | 𝔉𝔞𝔫𝔠𝔶
+              | 𝔉𝔬𝔫𝔱
+              | 𝔗𝔢𝔵𝔱
+              | 𝔊𝔢𝔫𝔢𝔯𝔞𝔱𝔬𝔯
+          span.myLogo
+            a.myLogo(title='Fancy Font Text Generator' href='https://fancy-text-generator.com/')
+              img(src='https://fancy-text-generator.com/favicon-76.png' alt=' Fancy Font Text Logo' width='35px' height='35px')
+          .icons_wrapper
+            a.darkMode(role='button' title='Use light theme' aria-label='Toggle DarkMode')
+            button.navbar-toggler.collapsed(type='button' aria-controls='bdNavbar' aria-expanded='false' aria-label='Toggle navigation')
+              svg.bi(xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='#fff' viewBox='0 0 16 16')
+                path(fill-rule='evenodd' d='M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z')
+          #bdNavbar
+            ul
+              li
+                a.darkMode(role='button' title='Use light theme' aria-label='Toggle DarkMode')
+              li
+                a.underline(href='home.html') Home
+              li
+                a.underline(href='patterns.html') Patterns
+              li
+                a.underline(href='iosEmojis.html') Ios Emojis
+              li
+                a.underline(href='') Android Emojis
+              li
+                a.underline(href='unicode.html' aria-current='page') Unicode
+    .text-area
+      .input-container
+        .input-wrapper
+          i.pen-icon(aria-label='Icon of Pencil')
+          input#mytext(placeholder='Your fancy text here')
+          button.btn-copy
+            | Copy All
+        button.bd-sidebar-toggler.collapsed(type='button' aria-controls='bd-docs-nav' aria-expanded='true' aria-label='Toggle docs navigation')
+          svg.bi.bi-expand(xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentColor' viewBox='0 0 16 16')
+            title Expand
+            path(fill-rule='evenodd' d='M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zM7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708l2-2zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10z')
+          svg.bi.bi-collapse(xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentColor' viewBox='0 0 16 16')
+            title Collapse
+            path(fill-rule='evenodd' d='M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zm7-8a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 4.293V.5A.5.5 0 0 1 8 0zm-.5 11.707l-1.146 1.147a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 11.707V15.5a.5.5 0 0 1-1 0v-3.793z')
+    .container-xxl.bd-layout
+      aside.bd-sidebar
+        nav#bd-patterns-nav(aria-label='Patterns navigation')
+          ul.bg-links
+            li
+              a.category.active(role='button' data-href='#st-content')
+                | Standard
+            li
+              a.category(role='button' data-href='#gepu-content')
+                | Punctuation
+            li
+              a.category(role='button' data-href='#suansu-content') 
+                | Superscripts/Subscripts
+            li
+              a.category(role='button' data-href='#cusy-content')
+                | Currency Symbols
+            li
+              a.category(role='button' data-href='#grch-content')
+                | Greek Characters
+            li
+              a.category(role='button' data-href='#nufo-content') 
+                | Number Forms
+            li
+              a.category(role='button' data-href='#ar-content') 
+                | Arrows
+            li
+              a.category(role='button' data-href='#maop-content') 
+                | Mathematical Operators
+            li
+              a.category(role='button' data-href='#masy-content')
+                | Math Symbols
+            li
+              a.category(role='button' data-href='#mite-content')
+                | Misc. Technical
+            li
+              a.category(role='button' data-href='#enal-content')
+                | Enclosed Alphanumerics
+            li
+              a.category(role='button' data-href='#bodr-content')
+                | Box Drawing
+            li
+              a.category(role='button' data-href='#blel-content')
+                | Block Elements
+            li
+              a.category(role='button' data-href='#gosh-content')
+                | Geometric Shapes
+            li
+              a.category(role='button' data-href='#misy-content')
+                | Misc. Symbols
+            li
+              a.category(role='button' data-href='#di-content')
+                | Dingbats
+            li
+              a.category(role='button' data-href='#brpa-content')
+                | Braille Patterns
+            li
+              a.category(role='button' data-href='#misyanar-content')
+                | Symbols and Arrows
+            li
+              a.category(role='button' data-href='#musy-content')
+                | Musical Symbols
+            li
+              a.category(role='button' data-href='#doti-content')
+                | Domino Tiles
+            li
+              a.category(role='button' data-href='#plca-content')
+                | Playing Cards
+            li
+              a.category(role='button' data-href='#em-content')
+                | Emoticons
+            li
+              a.category(role='button' data-href='#pi-content')
+                | Pictographs
+            li
+              a.category(role='button' data-href='#tr-content')
+                | Transport/Map
+      main.bd-main.order-1
+        #st-content.bd-content.active
+          div
+            h3 Standard
+          .content-wrapper.copy-area
+        #gepu-content.bd-content
+          h3 General Punctuation
+          .content-wrapper.copy-area
+        #suansu-content.bd-content
+          h3 Superscripts and Subscripts
+          .content-wrapper.copy-area
+        #cusy-content.bd-content
+          h3 Currency Symbols
+          .content-wrapper.copy-area
+        #grch-content.bd-content
+          h3 Greek Characters
+          .content-wrapper.copy-area
+        #nufo-content.bd-content
+          h3 Number Forms
+          .content-wrapper.copy-area
+        #ar-content.bd-content
+          h3 Arrows
+          .content-wrapper.copy-area
+        #maop-content.bd-content
+          h3 Mathematical Operators
+          .content-wrapper.copy-area
+        #masy-content.bd-content
+          h3 Math Symbols
+          .content-wrapper.copy-area
+        #mite-content.bd-content
+          h3 Misc. Technical
+          .content-wrapper.copy-area
+        #enal-content.bd-content
+          h3 Enclosed Alphanumerics
+          .content-wrapper.copy-area
+        #bodr-content.bd-content
+          h3 Box Drawing
+          .content-wrapper.copy-area
+        #blel-content.bd-content
+          h3 Block Elements
+          .content-wrapper.copy-area
+        #gosh-content.bd-content
+          h3 Geometric Shapes
+          .content-wrapper.copy-area
+        #misy-content.bd-content
+          h3 Misc. Symbols
+          .content-wrapper.copy-area
+        #di-content.bd-content
+          h3 Dingbats
+          .content-wrapper.copy-area
+        #brpa-content.bd-content
+          h3 Braille Patterns
+          .content-wrapper.copy-area
+        #misyanar-content.bd-content
+          h3 Symbols and Arrows
+          .content-wrapper.copy-area
+        #musy-content.bd-content
+          h3 Musical Symbols
+          .content-wrapper.copy-area
+        #doti-content.bd-content
+          h3 Domino Tiles
+          .content-wrapper.copy-area
+        #plca-content.bd-content
+          h3 Playing Cards
+          .content-wrapper.copy-area
+        #em-content.bd-content
+          h3 Emoticons
+          .content-wrapper.copy-area
+        #pi-content.bd-content
+          h3 Pictographs
+          .content-wrapper.copy-area
+        #tr-content.bd-content
+          h3 Transport/Map
+          .content-wrapper.copy-area
+    #links
+      a(href='https://fancy-text-generator.com/' target='_blank' title='Fancy Font Text Generator')
+        | Fancy
+        | Font Text Generator
+      a(href='https://high-qr-code-generator.com/' target='_blank' title='High Resolution QR Code Generator') QR Code Generator
+      a(href='https://www.arealme.com/' target='_blank' title='ARealMe Quizzes') Super cool online quizzes
+
+    script.
+      function aloadJS(r, e) {
+        var n = document; window; !function () { var t = n.createElement("script"); e = e || function () { }, t.onload = e, t.src = r; try { n.head.appendChild(t) } catch (r) { document.documentElement.appendChild(t) } }()
+      }
+      aloadJS('#{jquery_path}', _m);
+
+      function _m() {
+        toggleDarkMode();
+
+        eventsTrigger();
+
+        function eventsTrigger() {
+          // Copy text function
+          $(".copy-area").each(function () {
+            $(this).on("click", "p", function () {
+              ((t) => {
+                copyText(t)
+                changeInputVal(t)
+              })($(this).text());
+
+              var t = $(this);
+              // finish copy
+              var span = t.parent().find('span');
+              span.show();
+              setTimeout(() => {
+                span.hide();
+              }, 1000)
+            })
+          })
+
+          // Copy All
+          $(".btn-copy").on('click', function () {
+            copyText($("#mytext").val())
+
+            $(this).text("Copied!")
+            setTimeout(() => {
+              $(this).text("Copy All")
+            }, 1000)
+          })
+
+          // Navbar toggle
+          $('.navbar-toggler').click(function () {
+            $(this).toggleClass('collapsed')
+            if (!$(this).hasClass('collapsed')) {
+              // Check if the Sidebar is open
+              if ($('.bd-sidebar').hasClass('show')) {
+                $('.bd-sidebar').removeClass('show')
+              }
+              // Toggle navigation
+              $('#bdNavbar').addClass('show');
+            }
+            else {
+              $('#bdNavbar').removeClass('show');
+
+            }
+          })
+          // Sidebar toggler
+          $('.bd-sidebar-toggler').click(function () {
+            if ($(this).hasClass('collapsed')) {
+              $(this).removeClass('collapsed');
+              $('.bd-sidebar').addClass('show');
+            } else {
+              $(this).addClass('collapsed');
+              $('.bd-sidebar').removeClass('show');
+
+            }
+
+          })
+
+          // Click Aside Animation
+          $('#bd-patterns-nav .category').on('click', function () {
+            var targetid = $(this).attr('data-href').slice(1);
+
+            // Get the content 
+            var getContent = function (category, node) {
+              var filteredCategory = category.replace(/\n(\n)*( )*(\n)*\n/g, "\n")
+              getUnicode(filteredCategory.trim(), node);
+            }
+            getContent($(this).text(), $(`#${targetid} .copy-area`))
+
+
+            //Change the sidebar tags  
+            clearCls($('#bd-patterns-nav .category'), 'active')
+            $(this).toggleClass('active')
+            // Toggle sidebar
+            if ($(".bd-sidebar").hasClass('show')) {
+              $(".bd-sidebar").removeClass('show')
+              $('.bd-sidebar-toggler').addClass('collapsed')
+            }
+
+
+            // Change the tab
+            clearCls($('.bd-content'), 'active')
+            $(`#${targetid}`).addClass('active');
+
+            function clearCls(el, cls) {
+              el.each(function () {
+                if ($(this).hasClass(cls)) {
+                  $(this).removeClass(cls)
+                }
+              })
+            }
+          })
+
+          $('.collapse-link').on('click', function () {
+            $(this).toggleClass('active')
+          })
+
+          function changeInputVal(val) {
+            var originalval = $("#mytext").val();
+            $("#mytext").val(originalval + val);
+          }
+        }
+
+        var getUnicode = (function () {
+          var cache = {};
+          // Generate the unciodes
+          return function (category, node) {
+            // Check if there's unicode caches already
+            if (!cache[category]) {
+              $.getJSON('../unicode.json', function (data) {
+                $.each(data, function (infoIndex, info) {
+                  if (category === info['category']) {
+                    var unicodeList = getUniList(info);
+                    if (cache[category]) {
+                      cache[category].push(...unicodeList)
+                    } else {
+                      cache[category] = unicodeList;
+                    }
+                  }
+                  function getUniList(info) {
+                    var j = info['start'],
+                      e = info['end'],
+                      l = [];
+                    while (j <= info['end']) {
+                      if (j) {
+                        var ch = `&#${j};`
+                        l.push(ch);
+                      }
+                      j++;
+                    }
+                    return l
+                  }
+                })
+                setTexts(cache[category], node);
+              })
+            }
+          }
+          setTexts(cache[category], node);
+
+        })()
+
+        // Get the first category content
+        getUnicode('Standard', $('#st-content .copy-area'));
+
+        $(window).scroll(function () {
+          var scrollTop = $(this).scrollTop();
+
+          setSideBar()
+
+          // Sticky SlideBar & Test Area
+          function setSideBar() {
+            var layoutH = $('header').height();
+            if (scrollTop >= layoutH) {
+              $("aside").addClass('fixedAside');
+              $(".text-area").addClass('fixedText');
+            } else {
+              $('aside').removeClass('fixedAside');
+              $(".text-area").removeClass('fixedText');
+            }
+          }
+        })
+
+        function copyText(t) {
+          const e = document.createElement("textarea");
+          (e.value = t),
+            document.body.appendChild(e),
+            e.select(),
+            document.execCommand("copy"),
+            document.body.removeChild(e);
+
+        }
+
+        function setTexts(v, element) {
+          for (var i = 0; i < v.length; i++) {
+            var l = $(`<p>${v[i]}</;>`),
+              el = $('<div class="item-10 flex-item copy-wrapper"><span class="copy">Copied!</span></div>').append(l);
+            $(element).append(el)
+          }
+        }
+
+        function toggleDarkMode() {
+          // darkMode
+          $('.darkMode').click(function () {
+            $(this).toggleClass('active');
+            $(this).attr('title', "Use dark mode");
+            var cl = $("body").toggleClass("dark");
+            if ($("body").hasClass('dark')) {
+              // Whenever the user explicitly chooses dark mode
+              localStorage.theme = 'dark';
+            } else {
+              //     // Whenever the user explicitly chooses light mode
+              localStorage.theme = 'light';
+            }
+          })
+          changeStorageData();
+          function changeStorageData() {
+            if (
+              localStorage.theme === 'dark'
+              || (!('theme' in localStorage)
+                && window.matchMedia('(prefers-color-scheme: dark)').matches)
+            ) {
+              $("body").addClass('dark');
+              $('.darkMode').addClass('active');
+            } else {
+              $("body").removeClass('dark');
+            }
+          };
+        }
+
+      }
