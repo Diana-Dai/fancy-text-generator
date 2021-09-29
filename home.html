@@ -25,6 +25,7 @@
   <meta name="description"
     content="Fancy Text Font Generator. Get your personal stylish Instagram names and stories! Free and no registration required.">
   <link rel="shortcut icon" href="https://fancy-text-generator.com/favicon.ico">
+  <link rel="stylesheet" href="common.css">
   <link rel="stylesheet" href="home.css">
   <meta name="msapplication-TileColor" content="#FFFFFF">
   <meta name="msapplication-TileImage" content="/favicon-144.png">
@@ -77,9 +78,9 @@
         <span class="myLogo"> <a class="myLogo" title="Fancy Font Text Generator"
             href="https://fancy-text-generator.com/">
             <img width="35px" height="35px" src="https://fancy-text-generator.com/favicon-76.png"
-              alt=" Fancy Font Text Logo"></a></span>
+              alt="Fancy Font Text Logo"></a></span>
         <div class="icons_wrapper">
-          <a class="darkMode" role="button" title="Use light theme" id="dark-toggler" aria-label="Toggle DarkMode"></a>
+          <a class="darkMode" role="button" title="Use light theme" aria-label="Toggle DarkMode"></a>
           <button type="button" class="navbar-toggler collapsed" aria-controls="bdNavbar" aria-expanded="false"
             aria-label="Toggle navigation">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi" fill="#fff" viewBox="0 0 16 16">
@@ -93,8 +94,7 @@
           <ul>
 
             <li>
-              <a class="darkMode" role="button" title="Use light theme" id="dark-toggler"
-                aria-label="Toggle DarkMode"></a>
+              <a class="darkMode" role="button" title="Use light theme" aria-label="Toggle DarkMode"></a>
             </li>
             <li><a class="underline" href="home.html" aria-current="page">Home</a></li>
             <li><a class="underline" href="patterns.html">Patterns</a></li>
@@ -152,7 +152,7 @@
     toggleDarkMode();
     function toggleDarkMode() {
       // darkMode
-      $('#dark-toggler').click(function () {
+      $('.darkMode').click(function () {
         $(this).toggleClass('active');
         $(this).attr('title', "Use dark mode");
         var cl = $("body").toggleClass("dark");
@@ -172,7 +172,7 @@
             && window.matchMedia('(prefers-color-scheme: dark)').matches)
         ) {
           $("body").addClass('dark');
-          $('#dark-toggler').addClass('active');
+          $('.darkMode').addClass('active');
         } else {
           $("body").removeClass('dark');
         }
@@ -463,6 +463,7 @@
         });
       */
     }
+
   </script>
 </body>
 
