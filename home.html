@@ -60,7 +60,7 @@
   <style>
 
   </style>
-  <script src="js/jquery.js"></script>
+  <!-- <script src="js/jquery.js"></script> -->
   <!-- <script src="js/js"></script> -->
   <!-- <script src="js/addthis_widget.js"></script> -->
 </head>
@@ -149,35 +149,6 @@
       title="ARealMe Quizzes">Super cool online quizzes</a></div>
   <script>
 
-    toggleDarkMode();
-    function toggleDarkMode() {
-      // darkMode
-      $('.darkMode').click(function () {
-        $(this).toggleClass('active');
-        $(this).attr('title', "Use dark mode");
-        var cl = $("body").toggleClass("dark");
-        if ($("body").hasClass('dark')) {
-          // Whenever the user explicitly chooses dark mode
-          localStorage.theme = 'dark';
-        } else {
-          //     // Whenever the user explicitly chooses light mode
-          localStorage.theme = 'light';
-        }
-      })
-      changeStorageData();
-      function changeStorageData() {
-        if (
-          localStorage.theme === 'dark'
-          || (!('theme' in localStorage)
-            && window.matchMedia('(prefers-color-scheme: dark)').matches)
-        ) {
-          $("body").addClass('dark');
-          $('.darkMode').addClass('active');
-        } else {
-          $("body").removeClass('dark');
-        }
-      };
-    }
 
     function aloadJS(r, e) {
       var n = document; window;
@@ -187,6 +158,7 @@
     aloadJS('#{jquery_path}', _m);
 
     function _m() {
+      toggleDarkMode();
 
       var TEXT_SOURCE = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
       var fonts_arr = [
@@ -447,6 +419,36 @@
 
         }
       })
+
+      function toggleDarkMode() {
+        // darkMode
+        $('.darkMode').click(function () {
+          $(this).toggleClass('active');
+          $(this).attr('title', "Use dark mode");
+          var cl = $("body").toggleClass("dark");
+          if ($("body").hasClass('dark')) {
+            // Whenever the user explicitly chooses dark mode
+            localStorage.theme = 'dark';
+          } else {
+            //     // Whenever the user explicitly chooses light mode
+            localStorage.theme = 'light';
+          }
+        })
+        changeStorageData();
+        function changeStorageData() {
+          if (
+            localStorage.theme === 'dark'
+            || (!('theme' in localStorage)
+              && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          ) {
+            $("body").addClass('dark');
+            $('.darkMode').addClass('active');
+          } else {
+            $("body").removeClass('dark');
+          }
+        };
+      }
+
 
       !function () {
         aloadJS("//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d4ef23adc8f9863", {});
