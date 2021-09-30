@@ -346,9 +346,8 @@
 
   .bd-sidebar.show ~ .bd-main {
     min-height: 0 !important;
-    height: calc(100vh - 20rem);
+    height: calc(100vh - 30rem);
     overflow: hidden;
-    transition: height 0.2s;
   }
 
   .bd-sidebar nav {
@@ -356,7 +355,6 @@
   }
   .bd-main {
     margin-left: 0;
-    transition: height 0.2s;
   }
   .content-wrapper .item-50 {
     width: 100%;
