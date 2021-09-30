@@ -398,9 +398,8 @@ h4 {
 
   .bd-sidebar.show ~ .bd-main {
     min-height: 0 !important;
-    height: calc(100vh - 70px - 56px);
+    height: calc(100vh - 30rem);
     overflow: hidden;
-    transition: height 0.2s;
   }
 
   .bd-sidebar nav {
