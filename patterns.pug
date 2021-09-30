@@ -393,23 +393,39 @@ block scripts
         function setDateTexts() {
 
           var textsList = [];
-          var date = $("#datePicker").val();
-          [year, month, date] = date.split("-");
+          var date = $("#datePicker").val(); //'2021-09-30'
+          [year, month, day] = date.split("-");
           
           var numberToMonth = {
-            "01": "Jan",
-            "02": "Feb",
-            "03": "Mar",
-            "04": "Apr",
+            "01": "January",
+            "02": "February",
+            "03": "March",
+            "04": "April",
             "05": "May",
-            "06": "Jun",
-            "07": "jul",
-            "08": "Aug",
-            "09": "Sep",
-            10: "Oct",
-            11: "Nov",
-            12: "Dec",
+            "06": "June",
+            "07": "july",
+            "08": "August",
+            "09": "September",
+            '10': "October",
+            '11': "November",
+            '12': "December",
           };
+
+          function u(t, e) {
+            if (!t) return "";
+            var test = Number(t);
+            if (isNaN(test)) {
+              var a = Array.from("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+            } else {
+              var a = Array.from("0123456789");
+            }
+            for (var n = Array.from(e), r = t, i = 0; i < a.length; i++) {
+              var o = a[i],
+                s = n[i];
+              r = r.split(o).join(s);
+            }
+            return r;
+          }
           var getTexts = {
             getPattern1() {
               var font = [
@@ -421,21 +437,7 @@ block scripts
               };
               function getTexts(font, month, func) {
                 var z = [];
-                function u(t, e) {
-                  if (!t) return "";
-                  var test = Number(t);
-                  if (isNaN(test)) {
-                    var a = Array.from("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
-                  } else {
-                    var a = Array.from("0123456789");
-                  }
-                  for (var n = Array.from(e), r = t, i = 0; i < a.length; i++) {
-                    var o = a[i],
-                      s = n[i];
-                    r = r.split(o).join(s);
-                  }
-                  return r;
-                }
+
                 for (var r = 0; r < font.length; r++) {
                   var i = font[r],
                     x = u(month, i),
@@ -444,7 +446,7 @@ block scripts
                 }
                 return z;
               }
-              return getTexts(font, numberToMonth[month], func)
+              return getTexts(font, numberToMonth[month].slice(0,3), func)
             },
             getPattern2() {
               var font1 = [
@@ -453,41 +455,84 @@ block scripts
               ];
               var font2 = ["⓿➊➋➌➍➎➏➐➑➒", "⓪①②③④⑤⑥⑦⑧⑨"];
 
-              function getTexts2(font1, month, date, font2) {
+              function getTexts2(font1, font2, month, day) {
                 var z = [];
-                function u(t, e) {
-                  if (!t) return "";
-                  var test = Number(t);
-                  if (isNaN(test)) {
-                    var a = Array.from("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
-                  } else {
-                    var a = Array.from("0123456789");
-                  }
-                  for (var n = Array.from(e), r = t, i = 0; i < a.length; i++) {
-                    var o = a[i],
-                      s = n[i];
-                    r = r.split(o).join(s);
-                  }
-                  return r;
-                }
+
                 for (var r = 0; r < font1.length; r++) {
                   var i = font1[r],
-                    x = u(month, i) + u(date, font2[r]);
+                    x = u(month, i) + u(day, font2[r]);
                   z.push(x);
                 }
                 return z;
               }
-              return getTexts2(font1, numberToMonth[month], date, font2)
+              return getTexts2(font1,font2, numberToMonth[month].slice(0,3), day, )
+            },
+            getPattern3() {
+              var font1 = [
+                "ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ",
+                "ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ",
+              ];
+              var font2 = ["𝟶𝟷𝟸𝟹𝟺𝟻𝟼𝟽𝟾𝟿", "0123456789"];
+
+              function getTexts(font1,font2, month, day) {
+                var z = [];
+
+                for (var r = 0; r < font1.length; r++) {
+                  var i = font1[r],
+                    x = u(month, i) + '.' + u(day, font2[r]);
+                  z.push(x);
+                }
+                return z;
+              }
+              return getTexts(font1, font2, numberToMonth[month], day)
+            },
+            getPattern4() {
+              var font1 = [
+                "𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ",
+                "𝐚𝐛𝐜𝐝𝐞𝐟𝐠𝐡𝐢𝐣𝐤𝐥𝐦𝐧𝐨𝐩𝐪𝐫𝐬𝐭𝐮𝐯𝐰𝐱𝐲𝐳𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙",
+                "𝚊𝚋𝚌𝚍𝚎𝚏𝚐𝚑𝚒𝚓𝚔𝚕𝚖𝚗𝚘𝚙𝚚𝚛𝚜𝚝𝚞𝚟𝚠𝚡𝚢𝚣𝙰𝙱𝙲𝙳𝙴𝙵𝙶𝙷𝙸𝙹𝙺𝙻𝙼𝙽𝙾𝙿𝚀𝚁𝚂𝚃𝚄𝚅𝚆𝚇𝚈𝚉"
+              ];
+              var font2 = [["𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡","𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡"],['0123456789','0123456789'],['⁰¹²³⁴⁵⁶⁷⁸⁹','₀₁₂₃₄₅₆₇₈₉']];
+
+              var weekStr = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+              var week = weekStr[new Date(date).getDay()-1];
+              function getTexts(font1, font2, month, day, week) {
+                var z = [];
+
+                for (var r = 0; r < font1.length; r++) {
+                  if(day[0] ==='0'){
+                    day = day.slice(1);
+                  }
+                  var x = u(month, font2[r][0]) + '/'+ u(day, font2[r][1]) + ' ' + u(week, font1[r]);
+                  z.push(x);
+                }
+                return z;
+              }
+              return getTexts(font1, font2, month, day, week)
+            },            
+            getPattern5() {
+              var font1 = ["𝟢𝟣𝟤𝟥𝟦𝟧𝟨𝟩𝟪𝟫", "₀₁₂₃₄₅₆₇₈₉"];
+
+              function getTexts(font1 ,year,month, day) {
+                var z = [];
+
+                for (var r = 0; r < font1.length; r++) {
+                  var x = u(year, font1[r]) + '.' + u(month, font1[r]) + '.' + u(day, font1[r]);
+                  z.push(x);
+                }
+                return z;
+              }
+              return getTexts(font1, year, month, day)
             },
           }
 
           $("#dates-content .copy-area").empty();
           textsList.push(...getTexts.getPattern1());
           textsList.push(...getTexts.getPattern2());
+          textsList.push(...getTexts.getPattern3());
+          textsList.push(...getTexts.getPattern4());
+          textsList.push(...getTexts.getPattern5());
           setTexts(textsList, "#dates-content .copy-area");
-
-
-
 
         }
       },
