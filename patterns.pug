@@ -165,13 +165,10 @@ block scripts
             function updateCopyTag(el) {
               var span = el.parent().find("span");
               span.text("Copied!");
-              span.css("opacity", "1");
+
               setTimeout(() => {
                 span.text("Click To Copy");
-              }, 1000);
-              setTimeout(() => {
-                span.css("opacity", "0");
-              }, 2000);
+              }, 1200);
             }
           })
         })

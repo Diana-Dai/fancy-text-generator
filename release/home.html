@@ -47,13 +47,11 @@ const triggerEventsCommand = {
       updateCopyTag($(this));
 
       function updateCopyTag(el) {
-        var $others = $('#out textarea').not(el);
-        var span = el.parent().find('span');
-        span.text('Copied!');
-        setTimeout(() => {
-          span.text('Click To Copy');
-        }, 1000)
-
+          var span = el.parent().find("span");
+          span.text("Copied!");
+          setTimeout(() => {
+            span.text("Click To Copy");
+          }, 1000);
       }
 
 
