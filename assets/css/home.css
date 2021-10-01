@@ -119,11 +119,6 @@ h3 {
 .working {
   background-color: #fff;
 }
-.bd-sidebar-toggle,
-.icons_wrapper,
-.myLogo {
-  display: none;
-}
 
 /* Mobile */
 
@@ -133,69 +128,18 @@ h3 {
     margin: 0 auto;
   }
 
-  h1 {
-    font-size: 1rem;
-  }
-
-  h2 {
-    font-size: 1rem;
-    margin: 0.5rem 0;
-  }
-
   #renderLoading {
     display: none;
   }
-  .wrap {
-    width: 100%;
-  }
+
   #out #demo,
   #input textarea,
   .copy-area {
     font-size: 1rem;
   }
 
-  header nav {
-    flex-wrap: wrap;
-  }
-  #bdNavbar {
-    width: 100%;
-    height: 0px;
-    opacity: 0;
-    overflow: hidden;
-    transition: height 0.2s, opacity 0.1s;
-  }
-  #bdNavbar.show {
-    height: 127px;
-    opacity: 1;
-    width: 100%;
-    overflow: hidden;
-    transition: height 0.2s, opacity 0.1s;
-  }
-  #bdNavbar ul {
-    margin-top: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  #bdNavbar ul li {
-    margin-right: auto;
-    width: 50%;
-  }
-  #bdNavbar ul li:first-child {
-    display: none;
-  }
-
-  .title {
-    display: none;
-  }
   #links {
     display: flex;
     flex-direction: column;
-  }
-  .bd-sidebar-toggle,
-  .myLogo {
-    display: inline-block;
-  }
-  .icons_wrapper {
-    display: flex;
   }
 }

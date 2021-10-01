@@ -25,7 +25,7 @@ const { minify } = require("html-minifier-terser");
 minify(pug_html1, {
   removeAttributeQuotes: false,
   removeComments: true,
-  minifyJS: false,
+  minifyJS: true,
   minifyCSS: true,
 }).then((result) => {
   fs.writeFileSync("release/home.html", result, "utf8");
@@ -34,7 +34,7 @@ minify(pug_html1, {
 minify(pug_html2, {
   removeAttributeQuotes: false,
   removeComments: true,
-  minifyJS: false,
+  minifyJS: true,
   minifyCSS: true,
 }).then((result) => {
   fs.writeFileSync("release/patterns.html", result, "utf8");
@@ -43,7 +43,7 @@ minify(pug_html2, {
 minify(pug_html3, {
   removeAttributeQuotes: false,
   removeComments: true,
-  minifyJS: false,
+  minifyJS: true,
   minifyCSS: true,
 }).then((result) => {
   fs.writeFileSync("release/iosEmojis.html", result, "utf8");
@@ -52,7 +52,7 @@ minify(pug_html3, {
 minify(pug_html4, {
   removeAttributeQuotes: false,
   removeComments: true,
-  minifyJS: false,
+  minifyJS: true,
   minifyCSS: true,
 }).then((result) => {
   fs.writeFileSync("release/unicode.html", result, "utf8");

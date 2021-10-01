@@ -37,7 +37,7 @@ block content
     .input-container
       .input-wrapper
         i.pen-icon(aria-label='Icon of Pencil')
-        input#mytext(placeholder='Your fancy text here')
+        input#mytext(placeholder='Your fancy text here' spellcheck="false")
         button.btn-copy
           | Copy All
       button.bd-sidebar-toggler.collapsed(type='button' aria-controls='bd-docs-nav' aria-expanded='true' aria-label='Toggle docs navigation')
@@ -294,7 +294,6 @@ block scripts
           $.each(data, function (infoIndex, info) {
             if (info["category"] === 'holiday') {
               jsonToTxts.setHolidays(info["list"]);
-
             }
             if (info["category"] === 'quotes') {
               jsonToTxts.setQuotes(info['list'])
@@ -536,7 +535,7 @@ block scripts
       setTexts(v, element) {
         for (var i = 0; i < v.length; i++) {
           var l = $(`<p>${v[i]}</;>`),
-            el = $('<div class="item-50 flex-item copy-wrapper"><span class="copy">Click To Copy!</span></div>').append(l);
+            el = $('<div class="item-50 flex-item copy-wrapper"><span class="copy">Click To Copy</span></div>').append(l);
           $(element).append(el)
         }
       }

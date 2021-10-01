@@ -33,9 +33,8 @@
   margin-left: 30px;
 }
 /* Aside */
-
 .bd-sidebar {
-  width: 250px;
+  min-width: 150px;
   white-space: nowrap;
 }
 .bd-sidebar nav {
@@ -44,11 +43,11 @@
   height: calc(100vh - 10rem);
   overflow-y: auto;
 }
-/* Aside */
 
-.bd-sidebar ul {
-  padding-left: 0;
+.bd-sidebar nav ul {
+  padding-right: 1rem;
 }
+
 .bd-sidebar .bg-links {
   margin-bottom: 2rem;
   margin-top: 0;
@@ -61,7 +60,6 @@
   line-height: 1.5;
   display: inline-block;
   padding: 0.3rem 0.7rem;
-  font-weight: 600;
   color: var(--sidebar-color);
   transition: all 0.2s linear;
 }
@@ -104,7 +102,7 @@
 }
 .bd-sidebar nav li a.active {
   color: var(--font-color);
-  font-weight: 500;
+  font-weight: 600;
 }
 .bd-content {
   display: none;
@@ -154,13 +152,13 @@ h4 {
   z-index: 1;
 }
 .text-area .input-container {
-  padding: 0.5rem 0;
+  padding: 1.2rem 0;
   background-color: var(--mytext-bg-color);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05),
     inset 0 -1px 0 rgba(0, 0, 0, 0.15);
 }
 .text-area .input-wrapper {
-  margin-left: calc(250px + 3rem);
+  margin-left: calc(150px + 3rem);
   margin-right: 2.5rem;
   height: 2.5rem;
   display: flex;
@@ -237,57 +235,10 @@ h4 {
   border-radius: 0.8rem;
   z-index: -1;
 }
-.bd-sidebar-toggler,
-.icons_wrapper,
-.myLogo {
-  display: none;
-}
 
 /* Mobile */
 
 @media (max-width: 768px) {
-  h1 {
-    font-size: 1rem;
-  }
-
-  h2 {
-    font-size: 0.9rem;
-    margin: 0.5rem 0;
-  }
-  .fixedTop {
-    left: 2%;
-    right: 2%;
-  }
-  header nav {
-    flex-wrap: wrap;
-  }
-  #bdNavbar {
-    width: 100%;
-    height: 0px;
-    opacity: 0;
-    overflow: hidden;
-    transition: height 0.2s, opacity 0.1s;
-  }
-  #bdNavbar.show {
-    height: 127px;
-    opacity: 1;
-    width: 100%;
-    overflow: hidden;
-    transition: height 0.2s, opacity 0.1s;
-  }
-  #bdNavbar ul {
-    margin-top: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  #bdNavbar ul li {
-    margin-right: auto;
-    width: 50%;
-  }
-  #bdNavbar ul li:first-child {
-    display: none;
-  }
-
   .text-area .input-wrapper {
     flex-grow: 1;
     margin-left: 0.5rem;
@@ -301,6 +252,7 @@ h4 {
   }
   .text-area .input-container {
     display: flex;
+    padding: 0.5rem 0;
   }
 
   .bd-layout {
@@ -364,12 +316,6 @@ h4 {
     width: 100%;
   }
 
-  .fixedText ~ .bd-layout .bd-sidebar {
-    top: 3rem;
-  }
-  nav .title {
-    display: none;
-  }
   #links {
     padding-left: 0;
     display: flex;
@@ -377,12 +323,5 @@ h4 {
   }
   .content-wrapper .item-10 {
     width: 20%;
-  }
-  .bd-sidebar-toggler,
-  .myLogo {
-    display: inline-block;
-  }
-  .icons_wrapper {
-    display: flex;
   }
 }
