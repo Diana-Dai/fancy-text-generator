@@ -9,55 +9,55 @@ function setDateTexts() {
   var date = $("#datePicker").val(); //'2021-09-30'
   [year, month, day] = date.split("-"); //'2021' '09' '30'
 
-var numberToMonth = {
-"01": "January",
-"02": "February",
-"03": "March",
-"04": "April",
-"05": "May",
-"06": "June",
-"07": "july",
-"08": "August",
-"09": "September",
-10: "October",
-11: "November",
-12: "December",
-};
+  var numberToMonth = {
+    "01": "January",
+    "02": "February",
+    "03": "March",
+    "04": "April",
+    "05": "May",
+    "06": "June",
+    "07": "july",
+    "08": "August",
+    "09": "September",
+    10: "October",
+    11: "November",
+    12: "December",
+  };
 
-//- 普通文本转为特殊字体文本 t 为普通文本, e 是特殊字体
-function u(t, e) {
-if (!t) return "";
-var test = Number(t);
-if (isNaN(test)) {
-var a = Array.from(
-"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-);
-} else {
-var a = Array.from("0123456789");
-}
-for (var n = Array.from(e), r = t, i = 0; i < a.length; i++) {
-var o = a[i],
-s = n[i];
-r = r.split(o).join(s);
-}
-return r;
-}
+  //- 普通文本转为特殊字体文本 t为普通文本, e是特殊字体
+  function u(t, e) {
+    if (!t) return "";
+    var test = Number(t);
+    if (isNaN(test)) {
+      var a = Array.from(
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+      );
+    } else {
+      var a = Array.from("0123456789");
+    }
+    for (var n = Array.from(e), r = t, i = 0; i < a.length; i++) {
+      var o = a[i],
+        s = n[i];
+      r = r.split(o).join(s);
+    }
+    return r;
+  }
 
-// 生成特殊格式文本函数
-// font1 列表为英文特殊字体, font2 列表为数字特殊字体
-// getTexts 函数将普通字体转为特殊字体并转为特定的格式
-// 以 getPattern4 为例,注释在函数中
-var getTexts = {
-getPattern1() {
-var font = [
-"𝓪𝓫𝓬𝓭𝓮𝓯𝓰𝓱𝓲𝓳𝓴𝓵𝓶𝓷𝓸𝓹𝓺𝓻𝓼𝓽𝓾𝓿𝔀𝔁𝔂𝔃𝓐𝓑𝓒𝓓𝓔𝓕𝓖𝓗𝓘𝓙𝓚𝓛𝓜𝓝𝓞𝓟𝓠𝓡𝓢𝓣𝓤𝓥𝓦𝓧𝓨𝓩",
-"𝒶𝒷𝒸𝒹𝑒𝒻𝑔𝒽𝒾𝒿𝓀𝓁𝓂𝓃𝑜𝓅𝓆𝓇𝓈𝓉𝓊𝓋𝓌𝓍𝓎𝓏𝒜𝐵𝒞𝒟𝐸𝐹𝒢𝐻𝐼𝒥𝒦𝐿𝑀𝒩𝒪𝒫𝒬𝑅𝒮𝒯𝒰𝒱𝒲𝒳𝒴𝒵",
-];
-function func(v) {
-return "/" + v + "./";
-}
-function getTexts(font, month, func) {
-var z = [];
+  // 生成特殊格式文本函数
+  // font1列表为英文特殊字体, font2列表为数字特殊字体
+  // getTexts函数将普通字体转为特殊字体并转为特定的格式
+  // 以getPattern4为例,注释在函数中
+  var getTexts = {
+    getPattern1() {
+      var font = [
+        "𝓪𝓫𝓬𝓭𝓮𝓯𝓰𝓱𝓲𝓳𝓴𝓵𝓶𝓷𝓸𝓹𝓺𝓻𝓼𝓽𝓾𝓿𝔀𝔁𝔂𝔃𝓐𝓑𝓒𝓓𝓔𝓕𝓖𝓗𝓘𝓙𝓚𝓛𝓜𝓝𝓞𝓟𝓠𝓡𝓢𝓣𝓤𝓥𝓦𝓧𝓨𝓩",
+        "𝒶𝒷𝒸𝒹𝑒𝒻𝑔𝒽𝒾𝒿𝓀𝓁𝓂𝓃𝑜𝓅𝓆𝓇𝓈𝓉𝓊𝓋𝓌𝓍𝓎𝓏𝒜𝐵𝒞𝒟𝐸𝐹𝒢𝐻𝐼𝒥𝒦𝐿𝑀𝒩𝒪𝒫𝒬𝑅𝒮𝒯𝒰𝒱𝒲𝒳𝒴𝒵",
+      ];
+      function func(v) {
+        return "/" + v + "./";
+      }
+      function getTexts(font, month, func) {
+        var z = [];
 
         for (var r = 0; r < font.length; r++) {
           var i = font[r],
@@ -176,21 +176,20 @@ var z = [];
       }
       return getTexts(font1, year, month, day);
     },
+  };
 
-};
+  // 清空dates里面的文本内容
+  $("#dates-content .copy-area").empty();
 
-// 清空 dates 里面的文本内容
-$("#dates-content .copy-area").empty();
+  // 将生成的文案列表添加到textsList中
+  textsList.push(...getTexts.getPattern1());
+  textsList.push(...getTexts.getPattern2());
+  textsList.push(...getTexts.getPattern3());
+  textsList.push(...getTexts.getPattern4());
+  textsList.push(...getTexts.getPattern5());
 
-// 将生成的文案列表添加到 textsList 中
-textsList.push(...getTexts.getPattern1());
-textsList.push(...getTexts.getPattern2());
-textsList.push(...getTexts.getPattern3());
-textsList.push(...getTexts.getPattern4());
-textsList.push(...getTexts.getPattern5());
-
-// 将生成的所有的文案都添加到 HTML 中
-setTexts(textsList, "#dates-content .copy-area");
+  // 将生成的所有的文案都添加到HTML中
+  setTexts(textsList, "#dates-content .copy-area");
 }
 
 ```
