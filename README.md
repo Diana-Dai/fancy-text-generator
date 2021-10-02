@@ -1,6 +1,6 @@
 ## 日期文案配置指南
 
-<code>
+```Javascript
 // 配置日期的文案函数
 // 如果要配置新的文案样式, 则添加新的getPattern函数到getTexts对象中
 // 再将得到的文案列表push到textsList中即可
@@ -193,11 +193,11 @@ textsList.push(...getTexts.getPattern5());
 setTexts(textsList, "#dates-content .copy-area");
 }
 
-</code>
+```Javascript
 
 ## 进度文案配置指南
 
-<code>
+```Javascript
 // 配置进度文案函数
 setProgressTxts() {
 
@@ -267,4 +267,4 @@ day = new Date();
 }
 },
 
-</code>
+```Javascript
