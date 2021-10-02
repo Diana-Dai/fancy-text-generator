@@ -48,65 +48,6 @@ function setDateTexts() {
   // getTexts函数将普通字体转为特殊字体并转为特定的格式
   // 以getPattern4为例,注释在函数中
   var getTexts = {
-    getPattern1() {
-      var font = [
-        "𝓪𝓫𝓬𝓭𝓮𝓯𝓰𝓱𝓲𝓳𝓴𝓵𝓶𝓷𝓸𝓹𝓺𝓻𝓼𝓽𝓾𝓿𝔀𝔁𝔂𝔃𝓐𝓑𝓒𝓓𝓔𝓕𝓖𝓗𝓘𝓙𝓚𝓛𝓜𝓝𝓞𝓟𝓠𝓡𝓢𝓣𝓤𝓥𝓦𝓧𝓨𝓩",
-        "𝒶𝒷𝒸𝒹𝑒𝒻𝑔𝒽𝒾𝒿𝓀𝓁𝓂𝓃𝑜𝓅𝓆𝓇𝓈𝓉𝓊𝓋𝓌𝓍𝓎𝓏𝒜𝐵𝒞𝒟𝐸𝐹𝒢𝐻𝐼𝒥𝒦𝐿𝑀𝒩𝒪𝒫𝒬𝑅𝒮𝒯𝒰𝒱𝒲𝒳𝒴𝒵",
-      ];
-      function func(v) {
-        return "/" + v + "./";
-      }
-      function getTexts(font, month, func) {
-        var z = [];
-
-        for (var r = 0; r < font.length; r++) {
-          var i = font[r],
-            x = u(month, i),
-            v = func.call(this, x);
-          z.push(v);
-        }
-        return z;
-      }
-      return getTexts(font, numberToMonth[month].slice(0, 3), func);
-    },
-    getPattern2() {
-      var font1 = [
-        "🅰🅱🅲🅳🅴🅵🅶🅷🅸🅹🅺🅻🅼🅽🅾🅿🆀🆁🆂🆃🆄🆅🆆🆇🆈🆉🅰🅱🅲🅳🅴🅵🅶🅷🅸🅹🅺🅻🅼🅽🅾🅿🆀🆁🆂🆃🆄🆅🆆🆇🆈🆉",
-        "🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉",
-      ];
-      var font2 = ["⓿➊➋➌➍➎➏➐➑➒", "⓪①②③④⑤⑥⑦⑧⑨"];
-
-      function getTexts2(font1, font2, month, day) {
-        var z = [];
-
-        for (var r = 0; r < font1.length; r++) {
-          var i = font1[r],
-            x = u(month, i) + u(day, font2[r]);
-          z.push(x);
-        }
-        return z;
-      }
-      return getTexts2(font1, font2, numberToMonth[month].slice(0, 3), day);
-    },
-    getPattern3() {
-      var font1 = [
-        "ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ",
-        "ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ",
-      ];
-      var font2 = ["𝟶𝟷𝟸𝟹𝟺𝟻𝟼𝟽𝟾𝟿", "0123456789"];
-
-      function getTexts(font1, font2, month, day) {
-        var z = [];
-
-        for (var r = 0; r < font1.length; r++) {
-          var i = font1[r],
-            x = u(month, i) + "." + u(day, font2[r]);
-          z.push(x);
-        }
-        return z;
-      }
-      return getTexts(font1, font2, numberToMonth[month], day);
-    },
     getPattern4() {
       //  目标效果为𝟙𝟘/𝟚 𝕊𝕒𝕥𝕦𝕣𝕕𝕒𝕪, 只不过字体有三种
 
@@ -157,25 +98,6 @@ function setDateTexts() {
       }
       return getTexts(font1, font2, month, day, week);
     },
-    getPattern5() {
-      var font1 = ["𝟢𝟣𝟤𝟥𝟦𝟧𝟨𝟩𝟪𝟫", "₀₁₂₃₄₅₆₇₈₉"];
-
-      function getTexts(font1, year, month, day) {
-        var z = [];
-
-        for (var r = 0; r < font1.length; r++) {
-          var x =
-            u(year, font1[r]) +
-            "." +
-            u(month, font1[r]) +
-            "." +
-            u(day, font1[r]);
-          z.push(x);
-        }
-        return z;
-      }
-      return getTexts(font1, year, month, day);
-    },
   };
 
   // 清空dates里面的文本内容
@@ -191,6 +113,7 @@ function setDateTexts() {
   // 将生成的所有的文案都添加到HTML中
   setTexts(textsList, "#dates-content .copy-area");
 }
+
 
 ```
 
