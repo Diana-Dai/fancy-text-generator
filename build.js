@@ -34,7 +34,7 @@ minify(pug_html1, {
 minify(pug_html2, {
   removeAttributeQuotes: false,
   removeComments: true,
-  minifyJS: true,
+  minifyJS: false,
   minifyCSS: true,
 }).then((result) => {
   fs.writeFileSync("release/patterns.html", result, "utf8");

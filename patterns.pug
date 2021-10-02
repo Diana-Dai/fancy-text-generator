@@ -55,31 +55,11 @@ block content
             a.category.icon.date.active(href='#dates-content')
               | Dates
           li
-            a.category.icon.process(href='#process-content') 
-              | Process
+            a.category.icon.progress(href='#progress-content') 
+              | Progress
           li
             a.category.icon.arrow(href='#holidays-content') 
               | Holidays
-            .collapse
-              ul
-                li
-                  a.collapse-link.active(href='#holidays-newyear')
-                    | New Year
-                li
-                  a.collapse-link(href='#holidays-valentine')
-                    | Valentine's Day
-                li
-                  a.collapse-link(href='#holidays-chinesenewyear')
-                    | Chinese New Year
-                li
-                  a.collapse-link(href='#holidays-thanksgiving')
-                    | Thanksgiving
-                li
-                  a.collapse-link(href='#holidays-halloween')
-                    | Halloween
-                li
-                  a.collapse-link(href='#holidays-christmas')
-                    | Christmas
           li
             a.category.icon.quotes(href='#quotes-content') 
                 | Quotes
@@ -91,41 +71,11 @@ block content
             label(for='datePicker') Get custom date
             input#datePicker(type='date' value='' data-gramm_editor='false')
         .content-wrapper.copy-area
-      #process-content.bd-content
+      #progress-content.bd-content
         h3 PROCESS
         .content-wrapper.copy-area
       #holidays-content.bd-content
         h3 HOLIDAYS
-        #holidays-newyear.sub-content
-          h4.sub-title
-            span 🎊 
-            | New Year
-          .content-wrapper.copy-area
-        #holidays-valentine.sub-content
-          h4.sub-title
-            span 💝 
-            | Valentine's Day
-          .content-wrapper.copy-area
-        #holidays-chinesenewyear.sub-content
-          h4.sub-title
-            span 🧧 
-            | Chinese New Year
-          .content-wrapper.copy-area
-        #holidays-thanksgiving.sub-content
-          h4.sub-title
-            span 👪 
-            | Thanksgiving
-          .content-wrapper.copy-area
-        #holidays-halloween.sub-content
-          h4.sub-title
-            span 🎃 
-            | Halloween
-          .content-wrapper.copy-area
-        #holidays-christmas.sub-content
-          h4.sub-title
-            span 🎄 
-            | Christmas
-          .content-wrapper.copy-area
       #quotes-content.bd-content
         h3 QUOTES
         .content-wrapper.copy-area
@@ -285,70 +235,103 @@ block scripts
     const setTextsCommand = {
       execute() {
         this.getJsonTexts();
-        this.setProcessTxts()
+        this.setProgressTxts()
         this.setDateTxts()
       },
       getJsonTexts() {
         var setTexts = this.setTexts;
         $.getJSON('../patterns.json', function (data) {
           $.each(data, function (infoIndex, info) {
-            if (info["category"] === 'holiday') {
-              jsonToTxts.setHolidays(info["list"]);
-            }
-            if (info["category"] === 'quotes') {
-              jsonToTxts.setQuotes(info['list'])
+            // Check if there's subcategories
+            if(info['subcategory']){
+              jsonToTxts.setSubcategory(info["subcategory"], info['category']);
+            }else{
+              jsonToTxts.setContent(info['texts'], info['category'])
             }
           })
         })
+
         const jsonToTxts = {
-          setHolidays(j) {
-            for (var i = 0; i < Object.keys(j).length; i++) {
-              var key = Object.keys(j)[i],
-                list = j[key];
-              setTexts(list, `#holidays-${key} .copy-area`);
+          setSubcategory(sublist, category) {
+            var that = this;
+            //- If there's subcategories
+            if(Object.prototype.toString.call(sublist) === '[object Array]'){
+              $.each(sublist, function(itemindex,item){
+                that.setSubSidebar(category, item);
+                that.setSubContent(category, item)
+              })
             }
           },
-          setQuotes(list) {
-            setTexts(list, "#quotes-content .copy-area");
+          setContent(list, category){
+            var $container = $(`#${category}-content`);
+            var $contentWrapper = $('<div class="content-wrapper copy-area"></div>');
+            $container.append($contentWrapper);
+            setTexts(list, $contentWrapper);
+          },
+          setSubContent(category, item){
+            var $container = $(`#${category}-content`)
+            var $wrap = $(`<div class="sub-content" id="${category}-${item['id']}"></div>`);
+            var $title = $(`<h4 class="sub-title"><span>${item['icon']} </span>${item['name']}</h4>`);
+            var $contentWrapper = $('<div class="content-wrapper copy-area"></div>');
+            $wrap.append($title, $contentWrapper);
+            $container.append($wrap);
+            setTexts(item['texts'], $contentWrapper)
+          },
+          setSubSidebar(category, item){
+            var tag = category === "holidays" ? $('.category')[2] : $('.category')[3];
+            var existed = $(tag).next().length > 0;
+            console.log(existed);
+            if(existed){
+              var $ul = $(tag).next().children('ul');
+            }else{
+              var $wrap = $("<div class='collapse'></div>");
+              var $ul = $("<ul></ul");
+              $wrap.append($ul);
+              $(tag).after($wrap);
+            }
+            var $li = $('<li></li>');
+            var $child = $(`<a class="collapse-link" href="#holidays-${item['id']}"></a>`);
+            $child.text(item['name']);
+            $li.append($child);
+            $ul.append($li);
+            }
           }
-
-        }
       },
-      setProcessTxts() {
-        this.setTexts(getProcessTxts(), "#process-content .copy-area");
+      setProgressTxts() {
+        this.setTexts(getProgressTxts(), "#progress-content .copy-area");
 
-        function getProcessTxts() {
-          var processList = [],
+        function getProgressTxts() {
+          var progressList = [],
             day = new Date();
 
-          processList.push(todayProcess(day));
-          processList.push(weekProcess(day));
-          processList.push(monthProcess(day));
-          processList.push(yearProcess(day));
+          progressList.push(todayProgress(day));
+          progressList.push(weekProgress(day));
+          progressList.push(monthProgress(day));
+          progressList.push(yearProgress(day));
 
-          function todayProcess(day) {
+          function todayProgress(day) {
             var hours = day.getHours(),
               minuts = day.getMinutes() / 60,
-              processToday = (hours + minuts) / 24;
+              progressToday = (hours + minuts) / 24;
 
-            return ("𝐓𝐨𝐝𝐚𝐲 " + getDatas(processToday) + "%");
+            return ("𝐓𝐨𝐝𝐚𝐲 " + getDatas(progressToday) + "%");
           }
-          function weekProcess(day) {
+          function weekProgress(day) {
             var d = day.getDay(),
-              processWeek = d / 7;
-            return ("𝐓𝐡𝐢𝐬 𝐖𝐞𝐞𝐤 " + getDatas(processWeek) + "%");
+              progressWeek = d / 7;
+            return ("𝐓𝐡𝐢𝐬 𝐖𝐞𝐞𝐤 " + getDatas(progressWeek) + "%");
           }
-          function monthProcess(day) {
+          function monthProgress(day) {
             var dayCount =
               32 - new Date(day.getYear(), day.getMonth(), 32).getDate() + 1,
               datetoday = day.getDate(),
-              processMonth = datetoday / dayCount;
-            return ("𝐓𝐡𝐢𝐬 𝐌𝐨𝐧𝐭𝐡 " + getDatas(processMonth) + "%");
+              progressMonth = datetoday / dayCount;
+            return ("𝐓𝐡𝐢𝐬 𝐌𝐨𝐧𝐭𝐡 " + getDatas(progressMonth) + "%");
           }
-          function yearProcess(day) {
+          function yearProgress(day) {
             var month = day.getMonth(),
-              processYear = month / 12;
-            return ("𝐓𝐡𝐢𝐬 𝐘𝐞𝐚𝐫 " + getDatas(processYear) + "%");
+              progressYear = month / 12;
+            return ("𝐓𝐡𝐢𝐬 𝐘𝐞𝐚𝐫 " + getDatas(progressYear) + "%");
           }
 
           function getDatas(a) {
@@ -364,7 +347,7 @@ block scripts
             return new Array(n + 1).join(str);
           }
 
-          return processList;
+          return progressList;
         }
       },
       setDateTxts() {
@@ -540,7 +523,6 @@ block scripts
         }
       }
     }
-
 
     const toggleDarkModeCommand = {
       execute() {
